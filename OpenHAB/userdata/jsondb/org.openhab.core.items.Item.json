@@ -1,0 +1,14 @@
+{
+  "Namai": {
+    "class": "org.openhab.core.items.ManagedItemProvider$PersistedItem",
+    "value": {
+      "groupNames": [],
+      "itemType": "Group",
+      "tags": [
+        "Location"
+      ],
+      "label": "Namai",
+      "category": "house"
+    }
+  }
+}

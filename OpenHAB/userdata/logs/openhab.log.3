@@ -1,0 +1,43 @@
+2021-04-10 09:45:11.643 [INFO ] [.core.internal.i18n.I18nProviderImpl] - Time zone set to 'Europe/Vilnius'.
+2021-04-10 09:45:11.666 [INFO ] [.core.internal.i18n.I18nProviderImpl] - Locale set to 'en_LT'.
+2021-04-10 09:45:16.121 [WARN ] [org.openhab.core.net.NetUtil        ] - Found multiple local interfaces - ignoring 172.18.46.225
+2021-04-10 09:45:22.509 [INFO ] [.core.model.lsp.internal.ModelServer] - Started Language Server Protocol (LSP) service on port 5007
+2021-04-10 09:45:25.038 [INFO ] [org.openhab.ui.internal.UIService   ] - Started UI on port 8080
+2021-04-10 09:45:25.597 [INFO ] [ab.ui.habpanel.internal.HABPanelTile] - Started HABPanel at /habpanel
+2021-04-10 09:45:31.869 [INFO ] [e.automation.internal.RuleEngineImpl] - Rule engine started.
+2021-04-10 09:50:25.241 [WARN ] [mmon.WrappedScheduledExecutorService] - Scheduled runnable ended with an exception: 
+java.lang.UnsatisfiedLinkError: The specified procedure could not be found.
+
+	at jnr.ffi.provider.jffi.AsmRuntime.newUnsatisifiedLinkError(AsmRuntime.java:40) ~[?:?]
+	at jnr.unixsocket.Native$LibC$jnr$ffi$0.socket(Unknown Source) ~[?:?]
+	at jnr.unixsocket.Native.socket(Native.java:92) ~[?:?]
+	at jnr.unixsocket.UnixSocketChannel.<init>(UnixSocketChannel.java:101) ~[?:?]
+	at jnr.unixsocket.UnixSocketChannel.open(UnixSocketChannel.java:65) ~[?:?]
+	at org.freedesktop.dbus.connections.transports.UnixSocketTransport.connect(UnixSocketTransport.java:59) ~[?:?]
+	at org.freedesktop.dbus.connections.transports.TransportFactory.createTransport(TransportFactory.java:44) ~[?:?]
+	at org.freedesktop.dbus.connections.AbstractConnection.<init>(AbstractConnection.java:161) ~[?:?]
+	at org.freedesktop.dbus.connections.impl.DBusConnection.<init>(DBusConnection.java:334) ~[?:?]
+	at org.freedesktop.dbus.connections.impl.DBusConnection.getConnection(DBusConnection.java:149) ~[?:?]
+	at org.freedesktop.dbus.connections.impl.DBusConnection.getConnection(DBusConnection.java:169) ~[?:?]
+	at org.freedesktop.dbus.connections.impl.DBusConnection.getConnection(DBusConnection.java:219) ~[?:?]
+	at org.freedesktop.dbus.connections.impl.DBusConnection.getConnection(DBusConnection.java:184) ~[?:?]
+	at com.github.hypfvieh.bluetooth.DeviceManager.createInstance(DeviceManager.java:74) ~[?:?]
+	at org.openhab.binding.bluetooth.bluez.internal.DeviceManagerFactory.lambda$0(DeviceManagerFactory.java:82) ~[?:?]
+	at org.openhab.binding.bluetooth.util.RetryFuture$CallableTask.run(RetryFuture.java:67) ~[?:?]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264) ~[?:?]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:304) ~[?:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) [?:?]
+	at java.lang.Thread.run(Thread.java:834) [?:?]
+2021-04-10 09:52:06.802 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 09:52:10.522 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 09:53:52.284 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 09:54:55.780 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 11:08:50.444 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 11:09:03.957 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 11:09:13.397 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 11:12:02.672 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 11:27:27.060 [WARN ] [bluez.internal.BlueZDiscoveryService] - The DeviceManager is not available
+2021-04-10 11:30:03.430 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined
+2021-04-10 11:30:12.592 [WARN ] [e.internal.SseItemStatesEventBuilder] - Attempting to send a state update of an item which doesn't exist: undefined

@@ -1,0 +1,26 @@
+2021-04-09 20:49:54.496 [ERROR] [ternal.service.BootFeaturesInstaller] - Error installing boot features
+org.apache.felix.resolver.reason.ReasonException: Unable to resolve root: missing requirement [root] osgi.identity; osgi.identity=openhab-runtime-ui; type=karaf.feature; version="[3.0.1,3.0.1]"; filter:="(&(osgi.identity=openhab-runtime-ui)(type=karaf.feature)(version>=3.0.1)(version<=3.0.1))" [caused by: Unable to resolve openhab-runtime-ui/3.0.1: missing requirement [openhab-runtime-ui/3.0.1] osgi.identity; osgi.identity=org.openhab.ui; type=osgi.bundle; version="[3.0.1,3.0.1]"; resolution:=mandatory [caused by: Unable to resolve org.openhab.ui/3.0.1: missing requirement [org.openhab.ui/3.0.1] osgi.wiring.package; filter:="(osgi.wiring.package=org.openhab.core.net)" [caused by: Unable to resolve org.openhab.core/3.0.1: missing requirement [org.openhab.core/3.0.1] osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"]]]
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.felix.resolver.ResolverImpl.doResolve(ResolverImpl.java:392) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.felix.resolver.ResolverImpl.resolve(ResolverImpl.java:378) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.felix.resolver.ResolverImpl.resolve(ResolverImpl.java:332) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.karaf.features.internal.region.SubsystemResolver.resolve(SubsystemResolver.java:257) ~[?:?]
+	at org.apache.karaf.features.internal.service.Deployer.deploy(Deployer.java:393) ~[?:?]
+	at org.apache.karaf.features.internal.service.FeaturesServiceImpl.doProvision(FeaturesServiceImpl.java:1062) ~[?:?]
+	at org.apache.karaf.features.internal.service.FeaturesServiceImpl.lambda$doProvisionInThread$13(FeaturesServiceImpl.java:998) ~[?:?]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_172]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_172]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_172]
+	at java.lang.Thread.run(Thread.java:748) [?:1.8.0_172]
+Caused by: org.apache.felix.resolver.reason.ReasonException: Unable to resolve openhab-runtime-ui/3.0.1: missing requirement [openhab-runtime-ui/3.0.1] osgi.identity; osgi.identity=org.openhab.ui; type=osgi.bundle; version="[3.0.1,3.0.1]"; resolution:=mandatory [caused by: Unable to resolve org.openhab.ui/3.0.1: missing requirement [org.openhab.ui/3.0.1] osgi.wiring.package; filter:="(osgi.wiring.package=org.openhab.core.net)" [caused by: Unable to resolve org.openhab.core/3.0.1: missing requirement [org.openhab.core/3.0.1] osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"]]
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	... 12 more
+Caused by: org.apache.felix.resolver.reason.ReasonException: Unable to resolve org.openhab.ui/3.0.1: missing requirement [org.openhab.ui/3.0.1] osgi.wiring.package; filter:="(osgi.wiring.package=org.openhab.core.net)" [caused by: Unable to resolve org.openhab.core/3.0.1: missing requirement [org.openhab.core/3.0.1] osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"]
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	... 12 more
+Caused by: org.apache.felix.resolver.reason.ReasonException: Unable to resolve org.openhab.core/3.0.1: missing requirement [org.openhab.core/3.0.1] osgi.ee; filter:="(&(osgi.ee=JavaSE)(version=11))"
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	at org.apache.felix.resolver.Candidates$MissingRequirementError.toException(Candidates.java:1343) ~[org.eclipse.osgi-3.12.100.jar:?]
+	... 12 more
