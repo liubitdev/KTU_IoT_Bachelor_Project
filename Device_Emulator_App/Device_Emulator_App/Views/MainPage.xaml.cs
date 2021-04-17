@@ -5,6 +5,7 @@ using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Device_Emulator_App.Views.Components;
 
 namespace Device_Emulator_App.Views
 {
@@ -28,28 +29,31 @@ namespace Device_Emulator_App.Views
             littleLabel = new Label();
             littleLabel.Text = "-";
             deviceControls.Children.Add(littleLabel);
-
+            
         }
 
-        private async void HandlePickerItemChange(object sender, EventArgs e)
+        private /*async*/ void HandlePickerItemChange(object sender, EventArgs e)
         {
             littleLabel.Text = devicePicker.SelectedItem.ToString();
 
+
+            deviceControls.Children.Clear();
             if(devicePicker.SelectedItem.ToString() == "Finger Scanner") {
-                var availability = await CrossFingerprint.Current.IsAvailableAsync();
+                deviceControls.Children.Add(new FingerScannerComponent());
+                //    var availability = await CrossFingerprint.Current.IsAvailableAsync();
 
-                if(!availability) {
-                    await DisplayAlert("Warning!", "Cannot read fingerprint!", "OK");
-                    return;
-                }
+                //    if(!availability) {
+                //        await DisplayAlert("Warning!", "Cannot read fingerprint!", "OK");
+                //        return;
+                //    }
 
-                var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                    new AuthenticationRequestConfiguration("Heads up!", "I would like to use your biometrics."));
+                //    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
+                //        new AuthenticationRequestConfiguration("Heads up!", "I would like to use your biometrics."));
 
-                if (authResult.Authenticated)
-                {
-                    await DisplayAlert("Success!", "Success!", "OK");
-                }
+                //    if (authResult.Authenticated)
+                //    {
+                //        await DisplayAlert("Success!", "Success!", "OK");
+                //    }
             }
 
         }
