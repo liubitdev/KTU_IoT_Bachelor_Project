@@ -1,0 +1,15 @@
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\bin\Debug\netstandard2.0\Device_Emulator_App.deps.json
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\bin\Debug\netstandard2.0\Device_Emulator_App.dll
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\bin\Debug\netstandard2.0\ref\Device_Emulator_App.dll
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\bin\Debug\netstandard2.0\Device_Emulator_App.pdb
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Device_Emulator_App.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\App.xaml.g.cs
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\AppShell.xaml.g.cs
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Device_Emulator_App.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Device_Emulator_App.AssemblyInfo.cs
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Device_Emulator_App.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\XamlC.stamp
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Device_Emulator_App.dll
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\ref\Device_Emulator_App.dll
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Device_Emulator_App.pdb
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App\obj\Debug\netstandard2.0\Views\MainPage.xaml.g.cs

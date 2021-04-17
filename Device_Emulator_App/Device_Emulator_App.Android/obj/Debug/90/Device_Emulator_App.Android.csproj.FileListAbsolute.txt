@@ -1,0 +1,3 @@
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App.Android\obj\Debug\90\build.props
+C:\Users\Admin\Desktop\KTU_IoT_Bachelor_Project\Device_Emulator_App\Device_Emulator_App.Android\obj\Debug\90\adb.props
