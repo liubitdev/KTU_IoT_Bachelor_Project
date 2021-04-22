@@ -17,7 +17,6 @@
 
     <ScrollView>
         <StackLayout>
-            <Label>Test Text</Label>
             <StackLayout>
                 <Picker x:Name="devicePicker"></Picker>
                 <StackLayout x:Name="deviceControls"/>

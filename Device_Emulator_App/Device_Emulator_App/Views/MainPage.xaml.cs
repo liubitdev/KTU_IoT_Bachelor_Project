@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Plugin.Fingerprint;
-using Plugin.Fingerprint.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Device_Emulator_App.Views.Components;
@@ -17,6 +15,7 @@ namespace Device_Emulator_App.Views
             InitializeComponent();
 
             List<string> lines = new List<string>();
+            lines.Add("Message Receiver");
             lines.Add("Finger Scanner");
             lines.Add("Window");
             lines.Add("Door");
@@ -32,28 +31,22 @@ namespace Device_Emulator_App.Views
             
         }
 
-        private /*async*/ void HandlePickerItemChange(object sender, EventArgs e)
+        private async void HandlePickerItemChange(object sender, EventArgs e)
         {
             littleLabel.Text = devicePicker.SelectedItem.ToString();
 
-
             deviceControls.Children.Clear();
-            if(devicePicker.SelectedItem.ToString() == "Finger Scanner") {
-                deviceControls.Children.Add(new FingerScannerComponent());
-                //    var availability = await CrossFingerprint.Current.IsAvailableAsync();
-
-                //    if(!availability) {
-                //        await DisplayAlert("Warning!", "Cannot read fingerprint!", "OK");
-                //        return;
-                //    }
-
-                //    var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                //        new AuthenticationRequestConfiguration("Heads up!", "I would like to use your biometrics."));
-
-                //    if (authResult.Authenticated)
-                //    {
-                //        await DisplayAlert("Success!", "Success!", "OK");
-                //    }
+            switch (devicePicker.SelectedItem.ToString())
+            {
+                case "Finger Scanner":
+                    deviceControls.Children.Add(new FingerScannerComponent());
+                    break;
+                case "Message Receiver":
+                    deviceControls.Children.Add(new MessageReceiver());
+                    break;
+                default:
+                    await DisplayAlert("Sorry!", "Invalid selected item!", "OK");
+                    break;
             }
 
         }
