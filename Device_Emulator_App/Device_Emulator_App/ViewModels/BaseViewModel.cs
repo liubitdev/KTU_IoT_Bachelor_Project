@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-//using Device_Emulator_App.Models;
+using Device_Emulator_App.Models;
 using Device_Emulator_App.Services;
 using Xamarin.Forms;
 

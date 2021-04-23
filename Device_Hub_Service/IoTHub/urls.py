@@ -20,5 +20,5 @@ from . import apiviews
 
 urlpatterns = [
 #    path('admin/', admin.site.urls),
-    path('', apiviews.hello_world)
+    # path('', apiviews.hello_world)
 ]

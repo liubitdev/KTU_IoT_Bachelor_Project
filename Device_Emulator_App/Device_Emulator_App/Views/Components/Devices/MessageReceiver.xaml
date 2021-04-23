@@ -2,9 +2,13 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Device_Emulator_App.Views.Components.MessageReceiver">
+    
   <ContentView.Content>
-      <StackLayout>
-            <Label Text="{Binding DisplayedMessage}" />
-      </StackLayout>
+        <StackLayout>
+            <Button Text="Connect to server" Clicked="ClientConnect"/>
+            <Button Text="Send to server" Clicked="ClientSend"/>
+            <Label x:Name="MessageComponent" Text="{Binding DisplayedMessage}" />
+        </StackLayout>
   </ContentView.Content>
+    
 </ContentView>

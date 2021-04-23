@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Device_Emulator_App.Views.Components.Controllers;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
 using Xamarin.Forms;
@@ -16,6 +13,8 @@ namespace Device_Emulator_App.Views.Components
         public FingerScannerComponent()
         {
             InitializeComponent();
+
+            BindingContext = this;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
@@ -33,8 +32,12 @@ namespace Device_Emulator_App.Views.Components
 
             if (authResult.Authenticated)
             {
-                // TODO: Send call to openHAB
+                // TODO: Send call to HUB
                 await Application.Current.MainPage.DisplayAlert("Success!", "Authorized!", "OK");
+            }
+            else
+            {
+                ComponentContainer.Children.Add(new PinCodeComponent());
             }
         }
     }

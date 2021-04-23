@@ -3,14 +3,11 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:Device_Emulator_App.Views"
        Title="Simple Device Emulator App"
-       x:Class="Device_Emulator_App.AppShell">
-
-    <!--
-        The overall app visual hierarchy is defined here, along with navigation.
-    
-        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
-    -->
-
+       x:Class="Device_Emulator_App.AppShell"
+       Shell.NavBarIsVisible="False"
+       >
+    <!-- The overall app visual hierarchy is defined here, along with navigation.
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/ -->
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
@@ -30,7 +27,8 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Device View" Icon="icon_about.png" Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+        <ShellContent Title="Devices" Route="DevicesPage" ContentTemplate="{DataTemplate local:DevicesPage}" />
+        <ShellContent Title="Controllers" Route="ControllersPage" ContentTemplate="{DataTemplate local:ControllersPage}" />
     </TabBar>
 
     <!--

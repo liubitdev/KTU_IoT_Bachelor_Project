@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Device_Emulator_App.Views.Components.FingerScannerComponent">
   <ContentView.Content>
-      <StackLayout>
-            <Button Text="Authorize" Clicked="Button_Clicked" HorizontalOptions="Center"/>
+        <StackLayout>
+            <Button Text="Authorize" Clicked="Button_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <StackLayout x:Name="ComponentContainer"/>
         </StackLayout>
   </ContentView.Content>
 </ContentView>
