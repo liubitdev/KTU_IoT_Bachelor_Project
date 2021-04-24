@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using Device_Emulator_App.Views.Components;
+using Device_Emulator_App.ViewModels;
 using Device_Emulator_App.Views.Components.Controllers;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,46 +10,53 @@ namespace Device_Emulator_App.Views
     public partial class ControllersPage : ContentPage
     {
         private Label littleLabel;
+        private ControllersViewModel context = new ControllersViewModel();
         public ControllersPage()
         {
             InitializeComponent();
 
-            List<string> lines = new List<string>();
-            lines.Add("Camera");
-            lines.Add("Finger Scanner");
-            lines.Add("Pin Code");
-            lines.Add("Switch");
+            BindingContext = context;
 
-            devicePicker.Title = "Devices";
-            devicePicker.ItemsSource = lines;
+            devicePicker.Title = "Controllers";
+            devicePicker.ItemsSource = context.Lines;
+            devicePicker.SetBinding(Picker.ItemsSourceProperty, "Lines");
             devicePicker.SelectedIndexChanged += HandlePickerItemChange;
 
             littleLabel = new Label();
-            littleLabel.Text = "Please select a controller :)\nControllers control your house devices\nHow neat! ^-^";
+            littleLabel.Text = context.LittleLabelText;
             littleLabel.HorizontalTextAlignment = TextAlignment.Center;
             littleLabel.VerticalOptions = LayoutOptions.Center;
             littleLabel.HorizontalOptions = LayoutOptions.Center;
-            deviceControls.Children.Add(littleLabel);
+
+            ControllerLayout.Children.Add(littleLabel);
         }
 
         private async void HandlePickerItemChange(object sender, EventArgs e)
         {
-            littleLabel.Text = devicePicker.SelectedItem.ToString();
+            context.LittleLabelText = devicePicker.SelectedItem.ToString();
 
-            deviceControls.Children.Clear();
             switch (devicePicker.SelectedItem.ToString())
             {
+                case "Button":
+                    ControllerLayout.Children[1] = new ButtonController();
+                    break;
                 case "Camera":
-                    deviceControls.Children.Add(new CameraComponent());
+                    ControllerLayout.Children[1] = new CameraController();
+                    break;
+                case "Clock":
+                    ControllerLayout.Children[1] = new ClockController();
                     break;
                 case "Finger Scanner":
-                    deviceControls.Children.Add(new FingerScannerComponent());
+                    ControllerLayout.Children[1] = new FingerScannerController();
                     break;
                 case "Pin Code":
-                    deviceControls.Children.Add(new PinCodeComponent());
+                    ControllerLayout.Children[1] = new PinCodeController();
+                    break;
+                case "Sun Detector":
+                    ControllerLayout.Children[1] = new SunDetectorController();
                     break;
                 case "Switch":
-                    deviceControls.Children.Add(new Switch());
+                    ControllerLayout.Children[1] = new SwitchController();
                     break;
                 default:
                     await DisplayAlert("Sorry!", "Invalid selected item!", "OK");

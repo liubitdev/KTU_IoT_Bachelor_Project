@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Device_Emulator_App.Views.Components
+namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Mailbox : ContentView
+    public partial class MailboxThing : ContentView
     {
-        public Mailbox()
+        public MailboxThing()
         {
             InitializeComponent();
         }

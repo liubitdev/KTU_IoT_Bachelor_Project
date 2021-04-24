@@ -16,6 +16,7 @@ namespace Device_Emulator_App
         {
             InitializeComponent();
 
+            DependencyService.Register<ViewModels.Interfaces.IAlertService, Views.Utils.AlertService>();
             webSockets.EstablishConnection();
             MainPage = new AppShell();
         }

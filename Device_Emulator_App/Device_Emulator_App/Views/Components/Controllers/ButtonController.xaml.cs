@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SwitchComponent : ContentView
+    public partial class ButtonController : ContentView
     {
-        public SwitchComponent()
+        public ButtonController()
         {
             InitializeComponent();
         }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Device_Emulator_App.ViewModels.Components.Controllers"
+             x:Class="Device_Emulator_App.Views.Components.Controllers.SunDetectorController"
+             >
+    
+    <ContentView.Content >
+        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Label Text="Control the sun!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+            <Label Text="{Binding SliderValue}" HorizontalTextAlignment="Center" />
+            <Slider x:Name="SliderInput" Minimum="0" Maximum="1" ValueChanged="SliderValueChanged"/>
+            <BoxView BackgroundColor="{Binding BackgroundColor}" VerticalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentView.Content>
+    
+</ContentView>

@@ -20,11 +20,38 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Components\Devices\MailboxComponent.xaml.cs">
-      <DependentUpon>MailboxComponent.xaml</DependentUpon>
+    <Compile Update="Views\Components\Controllers\CameraController.xaml.cs">
+      <DependentUpon>CameraController.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\DevicesPage.xaml.cs">
-      <DependentUpon>DevicesPage.xaml</DependentUpon>
+    <Compile Update="Views\Components\Controllers\ClockController.xaml.cs">
+      <DependentUpon>ClockController.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Controllers\FingerScannerController.xaml.cs">
+      <DependentUpon>FingerScannerController.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Controllers\PinCodeController.xaml.cs">
+      <DependentUpon>PinCodeController.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Controllers\SunDetectorController.xaml.cs">
+      <DependentUpon>SunDetectorController.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Controllers\SwitchController.xaml.cs">
+      <DependentUpon>SwitchController.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Things\DoorThing.xaml.cs">
+      <DependentUpon>DoorThing.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Things\MailboxThing.xaml.cs">
+      <DependentUpon>MailboxThing.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Things\MessageReceiverThing.xaml.cs">
+      <DependentUpon>MessageReceiverThing.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Components\Things\WindowThing.xaml.cs">
+      <DependentUpon>WindowThing.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ThingsPage.xaml.cs">
+      <DependentUpon>ThingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\ControllersPage.xaml.cs">
       <DependentUpon>ControllersPage.xaml</DependentUpon>
@@ -32,32 +59,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Components\Controllers\CameraComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\ButtonController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Controllers\PinCodeComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\CameraController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Controllers\SwitchComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\ClockController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Devices\DoorComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\PinCodeController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Controllers\FingerScannerComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\SunDetectorController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Devices\MailboxComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\SwitchController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Devices\MessageReceiver.xaml">
+    <EmbeddedResource Update="Views\Components\Things\DoorThing.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Devices\WindowComponent.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\FingerScannerController.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Components\Things\MailboxThing.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Components\Things\MessageReceiverThing.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Components\Things\WindowThing.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ControllersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Components\Devices\" />
+    <Folder Include="Models\Components\Controllers\" />
   </ItemGroup>
 </Project>

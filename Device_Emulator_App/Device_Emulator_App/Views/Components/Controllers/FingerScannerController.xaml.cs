@@ -5,12 +5,13 @@ using Plugin.Fingerprint.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Device_Emulator_App.Views.Components
+namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FingerScannerComponent : ContentView
+    public partial class FingerScannerController : ContentView
     {
-        public FingerScannerComponent()
+        private bool isPinCodeInputVisible = false;
+        public FingerScannerController()
         {
             InitializeComponent();
 
@@ -37,7 +38,11 @@ namespace Device_Emulator_App.Views.Components
             }
             else
             {
-                ComponentContainer.Children.Add(new PinCodeComponent());
+                if (!isPinCodeInputVisible)
+                {
+                    ComponentContainer.Children.Add(new PinCodeController());
+                    isPinCodeInputVisible = true;
+                }
             }
         }
     }

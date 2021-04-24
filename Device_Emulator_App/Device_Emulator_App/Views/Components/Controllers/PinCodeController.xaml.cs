@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PinCodeComponent : ContentView
+    public partial class PinCodeController : ContentView
     {
         private static WebSockets webSockets = new WebSockets();
         private string pinInput = "";
@@ -27,7 +27,7 @@ namespace Device_Emulator_App.Views.Components.Controllers
             }
         }
 
-        public PinCodeComponent()
+        public PinCodeController()
         {
             InitializeComponent();
 
@@ -38,12 +38,23 @@ namespace Device_Emulator_App.Views.Components.Controllers
         {
             var button = (Button)sender;
             Console.WriteLine(button.ClassId);
-            PinInput += button.ClassId.ToString();
+            if (PinInput.Length < 4)
+            {
+                PinInput += button.ClassId.ToString();
+            }
         }
 
         private async void SubmitButtonHandler(object sender, EventArgs e)
         {
             //await webSockets.SendData("");
+        }
+
+        private async void DeleteButtonHandler(object sender, EventArgs e)
+        {
+            if (PinInput.Length != 0)
+            {
+                PinInput = PinInput.Substring(0, PinInput.Length - 1);
+            }
         }
     }
 }

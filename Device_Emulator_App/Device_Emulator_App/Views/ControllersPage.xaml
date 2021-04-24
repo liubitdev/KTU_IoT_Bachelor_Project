@@ -4,9 +4,8 @@
              x:Class="Device_Emulator_App.Views.ControllersPage">
 
     <ScrollView>
-        <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
+        <StackLayout x:Name="ControllerLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
             <Picker x:Name="devicePicker"/>
-            <StackLayout x:Name="deviceControls"/>
         </StackLayout>
     </ScrollView>
     

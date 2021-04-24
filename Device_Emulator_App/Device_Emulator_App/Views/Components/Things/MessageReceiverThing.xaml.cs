@@ -4,10 +4,10 @@ using Device_Emulator_App.Models.Network;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Device_Emulator_App.Views.Components
+namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MessageReceiver : ContentView
+    public partial class MessageReceiverThing : ContentView
     {
         private static WebSockets webSockets = new WebSockets();
         private string displayedMessage;
@@ -20,7 +20,7 @@ namespace Device_Emulator_App.Views.Components
             }
         }
 
-        public MessageReceiver()
+        public MessageReceiverThing()
         {
             InitializeComponent();
 
