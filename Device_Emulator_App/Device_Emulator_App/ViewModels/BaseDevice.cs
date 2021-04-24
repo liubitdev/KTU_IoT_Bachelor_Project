@@ -21,8 +21,8 @@ namespace Device_Emulator_App.ViewModels
             get { return name; }
             set { SetProperty(ref name, value); }
         }
-        private DeviceState state;
-        public DeviceState State
+        private EDeviceNetworkState state;
+        public EDeviceNetworkState State
         {
             get { return state; }
             set { SetProperty(ref state, value); }

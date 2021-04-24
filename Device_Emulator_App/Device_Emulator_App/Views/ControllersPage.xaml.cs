@@ -40,9 +40,6 @@ namespace Device_Emulator_App.Views
                 case "Button":
                     ControllerLayout.Children[1] = new ButtonController();
                     break;
-                case "Camera":
-                    ControllerLayout.Children[1] = new CameraController();
-                    break;
                 case "Clock":
                     ControllerLayout.Children[1] = new ClockController();
                     break;

@@ -1,5 +1,4 @@
 ﻿using System;
-using Device_Emulator_App.Models;
 using Device_Emulator_App.Models.Network;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -7,7 +6,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MessageReceiverThing : ContentView
+    public partial class MessageReceiverThing : ContentPage
     {
         private static WebSockets webSockets = new WebSockets();
         private string displayedMessage;

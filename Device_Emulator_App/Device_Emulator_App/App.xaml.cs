@@ -11,13 +11,14 @@ namespace Device_Emulator_App
 {
     public partial class App : Application
     {
-        private static WebSockets webSockets = new WebSockets();
         public App()
         {
             InitializeComponent();
 
-            DependencyService.Register<ViewModels.Interfaces.IAlertService, Views.Utils.AlertService>();
-            webSockets.EstablishConnection();
+            //DependencyService.Register<ViewModels.Interfaces.IAlertService, Views.Utils.AlertService>();
+            //webSockets.EstablishConnection();
+            //DeviceModel.Configure("name", Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.MESSAGE_RECEIVER);
+            //DeviceModel.Create();
             MainPage = new AppShell();
         }
 

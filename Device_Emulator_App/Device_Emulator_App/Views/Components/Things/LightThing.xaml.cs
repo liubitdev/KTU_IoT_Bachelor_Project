@@ -10,30 +10,30 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DoorThing : ContentPage
+    public partial class LightThing : ContentPage
     {
-        public DoorViewModel context = new DoorViewModel();
-        public DoorThing()
+        public LightViewModel context = new LightViewModel();
+        public LightThing()
         {
             InitializeComponent();
 
             BindingContext = context;
-            context.IsDoorOpen = false;
+            context.IsLightOn = false;
         }
 
-        public void ToggleDoor()
+        public void ToggleLight()
         {
-            context.IsDoorOpen = !context.IsDoorOpen;
+            context.IsLightOn = !context.IsLightOn;
         }
 
-        public void OpenDoor()
+        public void TurnOnLight()
         {
-            context.IsDoorOpen = true;
+            context.IsLightOn = true;
         }
 
-        public void CloseDoor()
+        public void TurnOffLight()
         {
-            context.IsDoorOpen = false;
+            context.IsLightOn = false;
         }
     }
 }

@@ -20,9 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Components\Controllers\CameraController.xaml.cs">
-      <DependentUpon>CameraController.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Components\Controllers\ClockController.xaml.cs">
       <DependentUpon>ClockController.xaml</DependentUpon>
     </Compile>
@@ -62,9 +59,6 @@
     <EmbeddedResource Update="Views\Components\Controllers\ButtonController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Controllers\CameraController.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\Components\Controllers\ClockController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -83,10 +77,16 @@
     <EmbeddedResource Update="Views\Components\Controllers\FingerScannerController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Components\Things\LightThing.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Components\Things\MailboxThing.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Components\Things\MessageReceiverThing.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Components\Things\TvThing.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Components\Things\WindowThing.xaml">
@@ -95,10 +95,5 @@
     <EmbeddedResource Update="Views\ControllersPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\Components\Devices\" />
-    <Folder Include="Models\Components\Controllers\" />
   </ItemGroup>
 </Project>

@@ -2,11 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Device_Emulator_App.Views.ThingsPage">
-
-    <ScrollView>
-        <StackLayout x:Name="ThingsLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
-            <Picker x:Name="devicePicker"/>
-        </StackLayout>
-    </ScrollView>
-
+    
+    <StackLayout x:Name="ThingsLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Picker x:Name="devicePicker"/>
+        <Button Text="Configure" Clicked="ConfirmButtonHandler"/>
+    </StackLayout>
 </ContentPage>

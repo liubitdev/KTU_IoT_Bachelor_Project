@@ -7,10 +7,11 @@ using System.Timers;
 
 namespace Device_Emulator_App.Models.Network
 {
-    class WebSockets : IDisposable
+    public class WebSockets : IDisposable
     {
         public static event EventHandler<string> DataReceived = null;
 
+        private static string ip = "ws://10.0.2.2:8000/";
         private static ClientWebSocket ws = null;
         private static System.Timers.Timer socketTimer = new System.Timers.Timer(5000);
         private static string keepAliveMessage = "{\"message\":\"online\"}";
@@ -18,20 +19,34 @@ namespace Device_Emulator_App.Models.Network
         public WebSockets()
         {
             socketTimer.Elapsed += SocketTimerElapsed;
+            DeviceModel.NetworkState = Enums.EDeviceNetworkState.OFFLINE;
+        }
+
+        public WebSockets(string ipAddress) : this()
+        {
+            ip = ipAddress;
+        }
+
+        public WebSockets(string ipAddress, string port) : this(ip)
+        {
+            ip = ipAddress + ":" + port;
         }
 
         public async void EstablishConnection()
         {
+            DeviceModel.NetworkState = Enums.EDeviceNetworkState.CONNECTING;
             if (ws == null)
             {
                 ws = new ClientWebSocket();
             }
             else if (ws.State == WebSocketState.Open)
             {
+                DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
                 // Return if the socket is already open and running
                 return;
             }
-            await ws.ConnectAsync(new Uri("ws://10.0.2.2:8000/"), CancellationToken.None);
+            await ws.ConnectAsync(new Uri(ip), CancellationToken.None);
+            DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
             socketTimer.Start();
             ListenToSocket();
         }

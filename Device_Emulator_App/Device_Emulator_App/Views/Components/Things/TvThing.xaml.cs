@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Device_Emulator_App.Views.Components.Controllers
+namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CameraController : ContentView
+    public partial class TvThing : ContentPage
     {
-        public CameraController()
+        public TvThing()
         {
             InitializeComponent();
         }

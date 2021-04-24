@@ -21,8 +21,10 @@ namespace Device_Emulator_App.ViewModels
         {
             Lines = new List<string>();
             Lines.Add("Door");
+            Lines.Add("Light");
             Lines.Add("Mailbox");
             Lines.Add("Message Receiver");
+            Lines.Add("TV");
             Lines.Add("Window");
 
             LittleLabelText = "Please select a thing :)\nThings react to your set of rules\nPowerful! \\o/";

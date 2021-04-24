@@ -24,7 +24,6 @@ namespace Device_Emulator_App.ViewModels
         {
             Lines = new List<string>();
             Lines.Add("Button");
-            Lines.Add("Camera");
             Lines.Add("Clock");
             Lines.Add("Finger Scanner");
             Lines.Add("Pin Code");
