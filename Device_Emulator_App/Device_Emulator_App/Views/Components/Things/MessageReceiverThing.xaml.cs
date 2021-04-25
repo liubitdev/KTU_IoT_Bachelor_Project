@@ -1,5 +1,7 @@
 ﻿using System;
+using Device_Emulator_App.Models;
 using Device_Emulator_App.Models.Network;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -23,9 +25,9 @@ namespace Device_Emulator_App.Views.Components.Things
         {
             InitializeComponent();
 
-            WebSockets.DataReceived += (s, o) =>
+            DeviceModel.StatesChanged += (sender, data) =>
             {
-                DisplayedMessage = o.ToString();
+                DisplayedMessage = JsonConvert.SerializeObject(data);
             };
 
             DisplayedMessage = "Received message goes here!";

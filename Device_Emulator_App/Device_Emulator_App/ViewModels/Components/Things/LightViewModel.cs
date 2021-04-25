@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Device_Emulator_App.Models;
 
 namespace Device_Emulator_App.ViewModels.Components.Things
 {
@@ -51,7 +52,21 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 
         public LightViewModel()
         {
+            TurnOffLight();
 
+            DeviceModel.StatesChanged += (sender, data) =>
+            {
+                if (data.ContainsKey("enabled"))
+                {
+                    if(data["enabled"] == "true")
+                    {
+                        TurnOnLight();
+                    } else
+                    {
+                        TurnOffLight();
+                    }
+                }
+            };
         }
 
         public void ToggleLight()

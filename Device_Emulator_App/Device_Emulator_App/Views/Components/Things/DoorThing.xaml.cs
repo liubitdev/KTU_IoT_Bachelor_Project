@@ -18,22 +18,24 @@ namespace Device_Emulator_App.Views.Components.Things
             InitializeComponent();
 
             BindingContext = context;
-            context.IsDoorOpen = false;
+
+            OpenDoor();
+
         }
 
         public void ToggleDoor()
         {
-            context.IsDoorOpen = !context.IsDoorOpen;
+            context.ToggleDoor();
         }
 
         public void OpenDoor()
         {
-            context.IsDoorOpen = true;
+            context.OpenDoor();
         }
 
         public void CloseDoor()
         {
-            context.IsDoorOpen = false;
+            context.CloseDoor();
         }
     }
 }

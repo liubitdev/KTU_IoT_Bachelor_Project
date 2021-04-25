@@ -12,7 +12,6 @@ namespace Device_Emulator_App.Views
     {
         private Label littleLabel;
         private ThingsViewModel context = new ThingsViewModel();
-
         private string selectionName;
         public ThingsPage()
         {

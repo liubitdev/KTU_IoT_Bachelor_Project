@@ -18,7 +18,6 @@ namespace Device_Emulator_App.Views.Components.Things
             InitializeComponent();
 
             BindingContext = context;
-            context.IsLightOn = false;
         }
 
         public void ToggleLight()

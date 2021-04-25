@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Device_Emulator_App.Models;
 
 namespace Device_Emulator_App.ViewModels.Components.Things
 {
@@ -19,13 +20,13 @@ namespace Device_Emulator_App.ViewModels.Components.Things
             set { SetProperty(ref isDoorOpen, value);
                 if (IsDoorOpen)
                 {
-                    DoorColor = Xamarin.Forms.Color.White;
+                    DoorColor = Xamarin.Forms.Color.SandyBrown;
                     LabelText = "Door is open!";
                     LabelColor = Xamarin.Forms.Color.Black;
 
                 } else
                 {
-                    DoorColor = Xamarin.Forms.Color.Black;
+                    DoorColor = Xamarin.Forms.Color.SaddleBrown;
                     LabelText = "Door is closed!";
                     LabelColor = Xamarin.Forms.Color.White;
                 }
@@ -48,7 +49,22 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 
         public DoorViewModel()
         {
+            CloseDoor();
 
+            DeviceModel.StatesChanged += (sender, data) =>
+            {
+                if (data.ContainsKey("enabled"))
+                {
+                    if (data["enabled"] == "true")
+                    {
+                        OpenDoor();
+                    }
+                    else
+                    {
+                        CloseDoor();
+                    }
+                }
+            };
         }
 
         public void ToggleDoor()

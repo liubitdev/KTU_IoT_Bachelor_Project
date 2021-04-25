@@ -11,6 +11,9 @@ namespace Device_Emulator_App
         public AppShell()
         {
             InitializeComponent();
+
+            ThingsTab.Icon = ImageSource.FromResource("Device_Emulator_App.Resources.baseline_widgets_black_48.png");
+            ControllersTab.Icon = ImageSource.FromResource("Device_Emulator_App.Resources.baseline_settings_remote_black_48.png");
         }
 
     }

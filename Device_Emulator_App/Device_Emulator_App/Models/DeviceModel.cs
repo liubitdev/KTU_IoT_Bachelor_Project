@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Device_Emulator_App.Models.Enums;
 using Device_Emulator_App.Models.Network;
 using Newtonsoft.Json;
@@ -15,6 +16,7 @@ namespace Device_Emulator_App.Models
         public static WebSockets WebSocket { get; set; }
         public static Dictionary<string, string> States { get; set; }
 
+        public static event EventHandler<Dictionary<string, string>> StatesChanged = null;
         public static void Configure(string name, EDeviceType type, EDeviceGroup group)
         {
             Name = name;
@@ -36,17 +38,40 @@ namespace Device_Emulator_App.Models
 
         private static void Receive(string json)
         {
-            var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-            // TODO: Add json parsing and handling
+            // We don't want the 'StatesChanged' event to fire if received message from HUB contains no new information
+            bool changed = false;
+            var dict = new Dictionary<string, string>();
+
+            try
+            {
+                // Deserialize the received Json for better handling
+                dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+            }
+            catch (Exception e)
+            {
+                dict.Add("undefined", json);
+            }
+
             foreach (string key in dict.Keys)
             {
                 if (States.ContainsKey(key))
-                { // Update the value
-                    States[key] = dict[key];
-                } else
+                {
+                    if (States[key] != dict[key])
+                    {
+                        // Update the value
+                        States[key] = dict[key];
+                        changed = true;
+                    }
+                }
+                else
                 { // If not - add the new key & value
                     States.Add(key, dict[key]);
+                    changed = true;
                 }
+            }
+            if (changed)
+            {
+                StatesChanged?.Invoke(WebSockets.IP, States);
             }
         }
 

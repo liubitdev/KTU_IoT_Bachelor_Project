@@ -27,8 +27,8 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Things" Route="ThingsPage" ContentTemplate="{DataTemplate local:ThingsPage}" />
-        <ShellContent Title="Controllers" Route="ControllersPage" ContentTemplate="{DataTemplate local:ControllersPage}" />
+        <ShellContent x:Name="ThingsTab" Title="Things" Route="ThingsPage" ContentTemplate="{DataTemplate local:ThingsPage}" />
+        <ShellContent x:Name="ControllersTab" Title="Controllers" Route="ControllersPage" ContentTemplate="{DataTemplate local:ControllersPage}" />
     </TabBar>
 
     <!--

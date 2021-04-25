@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Device_Emulator_App.Views.Components.Controllers.PinCodeController">
-    <ContentView.Content>
-        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
-            <Label Text="{Binding PinInput}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="10">
-                <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal">
-                    <Button ClassId ="1" Text="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="PinNumberButtonHandler"/>
-                    <Button ClassId ="2" Text="2" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                    <Button ClassId ="3" Text="3" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                </StackLayout>                    
-                <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
-                    <Button ClassId ="4" Text="4" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                    <Button ClassId ="5" Text="5" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                    <Button ClassId ="6" Text="6" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                </StackLayout>                    
-                <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
-                    <Button ClassId ="7" Text="7" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                    <Button ClassId ="8" Text="8" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                    <Button ClassId ="9" Text="9" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
-                </StackLayout>
-                <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal">
-                    <Button Text="Del" BackgroundColor="Red" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Clicked="DeleteButtonHandler"/>
-                    <Button Text="Submit" BackgroundColor="Green" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Clicked="SubmitButtonHandler"/>
-                </StackLayout>
+    <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+
+        <Label Text="{Binding PinInput}" HorizontalTextAlignment="Center" FontSize="Large"/>
+        <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Padding="10">
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                <Button ClassId ="1" Text="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="PinNumberButtonHandler"/>
+                <Button ClassId ="2" Text="2" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+                <Button ClassId ="3" Text="3" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                <Button ClassId ="4" Text="4" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+                <Button ClassId ="5" Text="5" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+                <Button ClassId ="6" Text="6" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Fill" Orientation="Horizontal">
+                <Button ClassId ="7" Text="7" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+                <Button ClassId ="8" Text="8" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+                <Button ClassId ="9" Text="9" HorizontalOptions="FillAndExpand"  Clicked="PinNumberButtonHandler"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Orientation="Horizontal">
+                <Button Text="Del" BackgroundColor="Red" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Clicked="DeleteButtonHandler"/>
+                <Button Text="Submit" BackgroundColor="Green" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Clicked="SubmitButtonHandler"/>
             </StackLayout>
         </StackLayout>
-    </ContentView.Content>
-</ContentView>
+    </StackLayout>
+
+</ContentPage>

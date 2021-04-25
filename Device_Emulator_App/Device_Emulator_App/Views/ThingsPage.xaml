@@ -7,4 +7,5 @@
         <Picker x:Name="devicePicker"/>
         <Button Text="Configure" Clicked="ConfirmButtonHandler"/>
     </StackLayout>
+    
 </ContentPage>

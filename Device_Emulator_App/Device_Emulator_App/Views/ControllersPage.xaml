@@ -3,10 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Device_Emulator_App.Views.ControllersPage">
 
-    <ScrollView>
-        <StackLayout x:Name="ControllerLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
-            <Picker x:Name="devicePicker"/>
-        </StackLayout>
-    </ScrollView>
-    
+    <StackLayout x:Name="ControllerLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Picker x:Name="devicePicker"/>
+        <Button Text="Configure" Clicked="ConfirmButtonHandler"/>
+    </StackLayout>
+
 </ContentPage>

@@ -6,6 +6,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\baseline_settings_remote_black_48.png" />
+    <None Remove="Resources\baseline_widgets_black_48.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\baseline_settings_remote_black_48.png" />
+    <EmbeddedResource Include="Resources\baseline_widgets_black_48.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Plugin.Fingerprint" Version="2.1.4" />
     <PackageReference Include="System.Net.WebSockets.Client" Version="4.3.2" />

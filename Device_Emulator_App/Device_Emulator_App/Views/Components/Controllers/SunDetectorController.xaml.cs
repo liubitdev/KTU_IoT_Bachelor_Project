@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SunDetectorController : ContentView
+    public partial class SunDetectorController : ContentPage
     {
         public SunDetectorViewModel context = new SunDetectorViewModel();
         public SunDetectorController()

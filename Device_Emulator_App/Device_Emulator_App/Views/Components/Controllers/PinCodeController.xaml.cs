@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PinCodeController : ContentView
+    public partial class PinCodeController : ContentPage
     {
         private static WebSockets webSockets = new WebSockets();
         private string pinInput = "";

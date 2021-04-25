@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class FingerScannerController : ContentView
+    public partial class FingerScannerController : ContentPage
     {
         private bool isPinCodeInputVisible = false;
         public FingerScannerController()
@@ -40,7 +40,7 @@ namespace Device_Emulator_App.Views.Components.Controllers
             {
                 if (!isPinCodeInputVisible)
                 {
-                    ComponentContainer.Children.Add(new PinCodeController());
+                    //ComponentContainer.Children.Add(new PinCodeController());
                     isPinCodeInputVisible = true;
                 }
             }

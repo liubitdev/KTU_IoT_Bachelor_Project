@@ -10,8 +10,8 @@ namespace Device_Emulator_App.Models.Network
     public class WebSockets : IDisposable
     {
         public static event EventHandler<string> DataReceived = null;
+        public static string IP { get; set; } = "ws://10.0.2.2:8000/";
 
-        private static string ip = "ws://10.0.2.2:8000/";
         private static ClientWebSocket ws = null;
         private static System.Timers.Timer socketTimer = new System.Timers.Timer(5000);
         private static string keepAliveMessage = "{\"message\":\"online\"}";
@@ -24,12 +24,12 @@ namespace Device_Emulator_App.Models.Network
 
         public WebSockets(string ipAddress) : this()
         {
-            ip = ipAddress;
+            IP = ipAddress;
         }
 
-        public WebSockets(string ipAddress, string port) : this(ip)
+        public WebSockets(string ipAddress, string port) : this(IP)
         {
-            ip = ipAddress + ":" + port;
+            IP = ipAddress + ":" + port;
         }
 
         public async void EstablishConnection()
@@ -39,20 +39,34 @@ namespace Device_Emulator_App.Models.Network
             {
                 ws = new ClientWebSocket();
             }
-            else if (ws.State == WebSocketState.Open)
+            if (ws.State == WebSocketState.Open)
             {
                 DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
                 // Return if the socket is already open and running
                 return;
             }
-            await ws.ConnectAsync(new Uri(ip), CancellationToken.None);
-            DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
-            socketTimer.Start();
-            ListenToSocket();
+            if (ws.State == WebSocketState.None)
+            {
+                await ws.ConnectAsync(new Uri(IP), CancellationToken.None);
+                DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
+                socketTimer.Start();
+                ListenToSocket();
+            }
         }
 
         public async Task SendData(string jsonData)
         {
+            if (ws == null)
+            {
+                HandleOfflineRequest();
+                return;
+            }
+            if (ws.State != WebSocketState.Open)
+            {
+                HandleOfflineRequest();
+                return;
+            }
+
             var encoded = Encoding.UTF8.GetBytes(jsonData);
             var buffer = new ArraySegment<Byte>(encoded, 0, encoded.Length);
             await ws.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
@@ -60,7 +74,11 @@ namespace Device_Emulator_App.Models.Network
 
         private async void ListenToSocket()
         {
-            if (ws == null) return;
+            if (ws == null)
+            {
+                HandleOfflineRequest();
+                return;
+            }
 
             var readBuffer = new ArraySegment<byte>(new Byte[8192]);
             while (ws.State == WebSocketState.Open) // Keep listening to the socket while its open
@@ -88,9 +106,16 @@ namespace Device_Emulator_App.Models.Network
             keepAliveMessage = message;
         }
 
+        private void HandleOfflineRequest()
+        {
+            DeviceModel.NetworkState = Enums.EDeviceNetworkState.OFFLINE;
+            DataReceived?.Invoke(this, "No connection to server.");
+            return;
+        }
+
         public async void CloseConnection()
         {
-            if(ws.State != WebSocketState.Closed)
+            if (ws.State != WebSocketState.Closed)
             {
                 await ws.CloseAsync(WebSocketCloseStatus.Empty, String.Empty, CancellationToken.None);
             }

@@ -15,10 +15,6 @@ namespace Device_Emulator_App
         {
             InitializeComponent();
 
-            //DependencyService.Register<ViewModels.Interfaces.IAlertService, Views.Utils.AlertService>();
-            //webSockets.EstablishConnection();
-            //DeviceModel.Configure("name", Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.MESSAGE_RECEIVER);
-            //DeviceModel.Create();
             MainPage = new AppShell();
         }
 
