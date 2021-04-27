@@ -19,7 +19,7 @@ namespace Device_Emulator_App.Views.Components.Things
 
             BindingContext = context;
 
-            OpenDoor();
+            context.OpenDoor();
 
         }
 
@@ -28,14 +28,15 @@ namespace Device_Emulator_App.Views.Components.Things
             context.ToggleDoor();
         }
 
-        public void OpenDoor()
-        {
-            context.OpenDoor();
-        }
-
         public void CloseDoor()
         {
             context.CloseDoor();
         }
+
+        public void DoorOpenButtonHandler(object sender, EventArgs e)
+        {
+            context.OpenDoor();
+        }
+
     }
 }

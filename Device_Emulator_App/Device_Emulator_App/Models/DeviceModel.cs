@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Device_Emulator_App.Models.Enums;
 using Device_Emulator_App.Models.Network;
 using Newtonsoft.Json;
@@ -26,9 +27,9 @@ namespace Device_Emulator_App.Models
             States = new Dictionary<string, string>();
         }
 
-        public static void Create()
+        public async static Task Create()
         {
-            WebSocket.EstablishConnection();
+            await WebSocket.EstablishConnection();
             // TODO: Send info about this device to HUB
             WebSockets.DataReceived += (s, o) =>
             {

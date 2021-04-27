@@ -32,7 +32,7 @@ namespace Device_Emulator_App.Models.Network
             IP = ipAddress + ":" + port;
         }
 
-        public async void EstablishConnection()
+        public async Task EstablishConnection()
         {
             DeviceModel.NetworkState = Enums.EDeviceNetworkState.CONNECTING;
             if (ws == null)

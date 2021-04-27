@@ -4,8 +4,38 @@
              x:Class="Device_Emulator_App.Views.ThingsPage">
     
     <StackLayout x:Name="ThingsLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
+        <Label Text="Thing selection:" Padding="5"/>
         <Picker x:Name="devicePicker"/>
-        <Button Text="Configure" Clicked="ConfirmButtonHandler"/>
+        <Label x:Name="pickerDescription" />
+        
+        <Grid VerticalOptions="Fill" Padding="25">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" FontSize="Medium" TextColor="Black" Text="Server information:" />
+            <Label Grid.Row="1"
+                   Text="IP Address"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="1" Grid.Column="1" x:Name="ipAdressInput" Placeholder="IP Address" Text="ws://10.0.2.2" HorizontalTextAlignment="Center"/>
+            <Label Grid.Row="2"
+                   Text="Port"
+                   FontSize="Medium"
+                   TextColor="Black"
+                   HorizontalOptions="End"
+                   VerticalOptions="Center" />
+            <Entry Grid.Row="2" Grid.Column="1" x:Name="portInput" Placeholder="Port" Text="8000" HorizontalTextAlignment="Center" />
+            <Button Grid.Row="3" Grid.ColumnSpan="2" Text="Connect" Clicked="ConfirmButtonHandler" />
+        </Grid>
     </StackLayout>
     
 </ContentPage>

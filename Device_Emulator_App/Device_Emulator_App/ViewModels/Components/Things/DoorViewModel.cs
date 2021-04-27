@@ -69,16 +69,19 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 
         public void ToggleDoor()
         {
+            // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = !IsDoorOpen;
         }
 
         public void OpenDoor()
         {
+            // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = true;
         }
 
         public void CloseDoor()
         {
+            // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = false;
         }
 
