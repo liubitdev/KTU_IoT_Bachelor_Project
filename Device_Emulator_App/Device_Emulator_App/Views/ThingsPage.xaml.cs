@@ -51,9 +51,6 @@ namespace Device_Emulator_App.Views
                 case Models.Enums.EDeviceGroup.TV:
                     await Navigation.PushAsync(new TvThing());
                     break;
-                case Models.Enums.EDeviceGroup.MAILBOX:
-                    await Navigation.PushAsync(new MailboxThing());
-                    break;
                 default:
                     break;
             }

@@ -47,6 +47,14 @@ namespace Device_Emulator_App.ViewModels.Components.Things
             set { SetProperty(ref doorColor, value); }
         }
 
+        private bool isKnocked;
+        public bool IsKnocked
+        {
+            get { return isKnocked; }
+            set { SetProperty(ref isKnocked, value); }
+        }
+
+
         public DoorViewModel()
         {
             CloseDoor();
@@ -83,6 +91,11 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         {
             // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = false;
+        }
+
+        public void Knock()
+        {
+            IsKnocked = true;
         }
 
     }

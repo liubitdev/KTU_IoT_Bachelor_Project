@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Device_Emulator_App.ViewModels.Interfaces;
 
 namespace Device_Emulator_App.ViewModels
 {
     class ThingsViewModel : BaseViewModel
     {
-        private readonly IAlertService alertService;
         private string littleLabelText;
         public string LittleLabelText
         {

@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Device_Emulator_App.ViewModels.Interfaces;
-using Device_Emulator_App.Views.Components;
-using Device_Emulator_App.Views.Components.Controllers;
-using Xamarin.Forms;
+﻿using System.Collections.Generic;
 
 namespace Device_Emulator_App.ViewModels
 {
     public class ControllersViewModel : BaseViewModel
     {
-        private readonly IAlertService alertService;
         private string littleLabelText;
         public string LittleLabelText
         {

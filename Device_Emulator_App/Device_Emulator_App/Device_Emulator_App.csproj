@@ -30,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Components\Controllers\ClockController.xaml.cs">
-      <DependentUpon>ClockController.xaml</DependentUpon>
-    </Compile>
     <Compile Update="Views\Components\Controllers\FingerScannerController.xaml.cs">
       <DependentUpon>FingerScannerController.xaml</DependentUpon>
     </Compile>
@@ -48,8 +45,8 @@
     <Compile Update="Views\Components\Things\DoorThing.xaml.cs">
       <DependentUpon>DoorThing.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Components\Things\MailboxThing.xaml.cs">
-      <DependentUpon>MailboxThing.xaml</DependentUpon>
+    <Compile Update="Views\Components\Controllers\MailboxController.xaml.cs">
+      <DependentUpon>MailboxController.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Components\Things\MessageReceiverThing.xaml.cs">
       <DependentUpon>MessageReceiverThing.xaml</DependentUpon>
@@ -67,9 +64,6 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Views\Components\Controllers\ButtonController.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Controllers\ClockController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Components\Controllers\PinCodeController.xaml">
@@ -90,7 +84,7 @@
     <EmbeddedResource Update="Views\Components\Things\LightThing.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Components\Things\MailboxThing.xaml">
+    <EmbeddedResource Update="Views\Components\Controllers\MailboxController.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Components\Things\MessageReceiverThing.xaml">

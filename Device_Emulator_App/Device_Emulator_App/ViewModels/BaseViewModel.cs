@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Device_Emulator_App.Models;
-using Device_Emulator_App.Services;
-using Xamarin.Forms;
+using Device_Emulator_App.Models.Interfaces;
 
 namespace Device_Emulator_App.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged, ISubscribable
     {
         string title = string.Empty;
         public string Title
@@ -39,6 +37,8 @@ namespace Device_Emulator_App.ViewModels
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler<Dictionary<string, string>> StatesChanged;
+
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {
             var changed = PropertyChanged;
@@ -46,6 +46,7 @@ namespace Device_Emulator_App.ViewModels
                 return;
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
         #endregion
     }

@@ -39,9 +39,6 @@ namespace Device_Emulator_App.Views
                 case Models.Enums.EDeviceGroup.BUTTON:
                     await Navigation.PushAsync(new ButtonController());
                     break;
-                case Models.Enums.EDeviceGroup.CLOCK:
-                    await Navigation.PushAsync(new ClockController());
-                    break;
                 case Models.Enums.EDeviceGroup.FINGERSCANNER:
                     await Navigation.PushAsync(new FingerScannerController());
                     break;

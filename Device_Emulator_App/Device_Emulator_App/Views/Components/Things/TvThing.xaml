@@ -4,7 +4,21 @@
              x:Class="Device_Emulator_App.Views.Components.Things.TvThing">
 
     <StackLayout>
-        <Label Text="Hello Xamarin.Forms!" />
+        <Grid x:Name="TvGrid" VerticalOptions="FillAndExpand" BackgroundColor="{Binding TvColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="{Binding TvText}" TextColor="{Binding TvTextColor}" VerticalOptions="Center" HorizontalOptions="Center" />
+            <Button Grid.Row="1" Grid.Column="0" Text="ON" Clicked="TvOnButton" />
+            <Button Grid.Row="1" Grid.Column="1" Text="Switch Channel" Clicked="TvSwitchChannelButton" />
+            <Button Grid.Row="1" Grid.Column="2" Text="OFF" Clicked="TvOffButton" />
+        </Grid>
     </StackLayout>
 
 </ContentPage>

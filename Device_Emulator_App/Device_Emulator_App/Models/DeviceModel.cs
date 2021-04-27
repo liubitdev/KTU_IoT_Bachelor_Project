@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Device_Emulator_App.Models.Enums;
+using Device_Emulator_App.Models.Interfaces;
 using Device_Emulator_App.Models.Network;
 using Newtonsoft.Json;
 
@@ -18,6 +19,8 @@ namespace Device_Emulator_App.Models
         public static Dictionary<string, string> States { get; set; }
 
         public static event EventHandler<Dictionary<string, string>> StatesChanged = null;
+        
+        public static ISubscribable DeviceObject = null;
         public static void Configure(string name, EDeviceType type, EDeviceGroup group)
         {
             Name = name;
@@ -25,6 +28,12 @@ namespace Device_Emulator_App.Models
             Group = group;
             WebSocket = new WebSockets();
             States = new Dictionary<string, string>();
+        }
+
+        public static void Configure(ISubscribable deviceObject)
+        {
+            DeviceObject = deviceObject;
+            deviceObject.StatesChanged += Update;
         }
 
         public async static Task Create()
@@ -35,6 +44,16 @@ namespace Device_Emulator_App.Models
             {
                 Receive(o.ToString());
             };
+        }
+
+        public async static void Update(object sender, object json)
+        {
+
+            // TODO: Send updated info to server
+            // v Send JSON v
+            Console.WriteLine("Hello world!");
+            //await WebSocket.SendData((string)json);
+
         }
 
         private static void Receive(string json)

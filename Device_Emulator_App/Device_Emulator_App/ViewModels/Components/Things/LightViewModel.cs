@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Device_Emulator_App.Models;
+﻿using Device_Emulator_App.Models;
 
 namespace Device_Emulator_App.ViewModels.Components.Things
 {
