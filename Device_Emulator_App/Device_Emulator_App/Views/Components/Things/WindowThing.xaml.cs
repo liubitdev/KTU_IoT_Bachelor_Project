@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WindowThing : ContentPage
+    public partial class WindowThing : BasePage
     {
         public WindowThing()
         {

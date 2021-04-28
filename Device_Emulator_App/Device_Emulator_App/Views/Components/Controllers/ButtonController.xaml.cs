@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Controllers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ButtonController : ContentPage
+    public partial class ButtonController : BasePage
     {
         public ButtonController()
         {

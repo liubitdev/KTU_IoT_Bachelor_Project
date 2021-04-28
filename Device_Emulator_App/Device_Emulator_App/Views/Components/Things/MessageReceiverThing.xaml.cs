@@ -1,6 +1,6 @@
 ﻿using System;
 using Device_Emulator_App.Models;
-using Device_Emulator_App.Models.Network;
+using Device_Emulator_App.ViewModels.Components.Things;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,39 +8,30 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MessageReceiverThing : ContentPage
+    public partial class MessageReceiverThing : BasePage
     {
-        private static WebSockets webSockets = new WebSockets();
-        private string displayedMessage;
-        public string DisplayedMessage {
-            get { return displayedMessage; }
-            set
-            {
-                displayedMessage = value;
-                OnPropertyChanged(nameof(DisplayedMessage)); // Notify that there was a change on this property
-            }
-        }
+        public MessageReceiverViewModel context = new MessageReceiverViewModel();
 
         public MessageReceiverThing()
         {
             InitializeComponent();
 
-            DeviceModel.StatesChanged += (sender, data) =>
-            {
-                DisplayedMessage = JsonConvert.SerializeObject(data);
-            };
-
-            DisplayedMessage = "Received message goes here!";
-            BindingContext = this;
-        }
-        private void ClientConnect(object sender, EventArgs e)
-        {
-            webSockets.EstablishConnection();
+            BindingContext = context;
         }
 
-        private async void ClientSend(object sender, EventArgs e)
+        private void ReceiveMessage(object sender, object data)
         {
-            await webSockets.SendData("{\"message\":\"Hello World!\"}");
+            context.AddMessage(sender, JsonConvert.SerializeObject(data));
+        }
+
+        private void ClientSend(object sender, EventArgs e)
+        {
+            DeviceModel.Update(context, "{\"message\":\"Hello World!\"}");
+        }
+
+        private void ClearLog(object sender, EventArgs e)
+        {
+            context.ClearLog();
         }
 
     }

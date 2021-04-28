@@ -6,7 +6,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TvThing : ContentPage
+    public partial class TvThing : BasePage
     {
         public TvViewModel context = new TvViewModel();
         public TvThing()

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LightThing : ContentPage
+    public partial class LightThing : BasePage
     {
         public LightViewModel context = new LightViewModel();
         public LightThing()

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Device_Emulator_App.Views.Components.Things
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DoorThing : ContentPage
+    public partial class DoorThing : BasePage
     {
         public DoorViewModel context = new DoorViewModel();
         public DoorThing()

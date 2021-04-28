@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Device_Emulator_App.Views.Components.Controllers.FingerScannerController">
+<d:BasePage xmlns:d="clr-namespace:Device_Emulator_App.Views"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Device_Emulator_App.Views.Components.Controllers.FingerScannerController"
+            Shell.TabBarIsVisible = "False">
 
     <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Button Text="Authorize" Clicked="Button_Clicked" HorizontalOptions="Center" VerticalOptions="Center"/>
         <StackLayout x:Name="ComponentContainer"/>
     </StackLayout>
 
-</ContentPage>
+</d:BasePage>

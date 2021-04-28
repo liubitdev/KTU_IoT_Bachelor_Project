@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Device_Emulator_App.ViewModels.Components.Controllers"
-             x:Class="Device_Emulator_App.Views.Components.Controllers.SunDetectorController"
-             >
+<d:BasePage xmlns:d="clr-namespace:Device_Emulator_App.Views"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Device_Emulator_App.Views.Components.Controllers.SunDetectorController"
+            Shell.TabBarIsVisible = "False">
 
     <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
         <Label Text="Control the sun!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
@@ -12,4 +12,4 @@
         <BoxView BackgroundColor="{Binding BackgroundColor}" VerticalOptions="FillAndExpand"/>
     </StackLayout>
 
-</ContentPage>
+</d:BasePage>

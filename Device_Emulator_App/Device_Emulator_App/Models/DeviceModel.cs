@@ -26,8 +26,9 @@ namespace Device_Emulator_App.Models
             Name = name;
             Type = type;
             Group = group;
-            WebSocket = new WebSockets();
+            if(WebSocket == null) WebSocket = new WebSockets();
             States = new Dictionary<string, string>();
+            StatesChanged = null;
         }
 
         public static void Configure(ISubscribable deviceObject)
@@ -48,12 +49,15 @@ namespace Device_Emulator_App.Models
 
         public async static void Update(object sender, object json)
         {
-
             // TODO: Send updated info to server
             // v Send JSON v
-            Console.WriteLine("Hello world!");
-            //await WebSocket.SendData((string)json);
+            //Console.WriteLine("Hello world!");
+            await WebSocket.SendData((string)json);
+        }
 
+        public static void ClearSubscriptions()
+        {
+            StatesChanged = null;
         }
 
         private static void Receive(string json)
@@ -89,10 +93,10 @@ namespace Device_Emulator_App.Models
                     changed = true;
                 }
             }
-            if (changed)
-            {
+            //if (changed)
+            //{
                 StatesChanged?.Invoke(WebSockets.IP, States);
-            }
+            //}
         }
 
     }

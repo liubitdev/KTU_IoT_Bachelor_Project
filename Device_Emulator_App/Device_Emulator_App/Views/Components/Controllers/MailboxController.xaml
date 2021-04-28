@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Device_Emulator_App.Views.Components.Controllers.MailboxController">
+<d:BasePage xmlns:d="clr-namespace:Device_Emulator_App.Views"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Device_Emulator_App.Views.Components.Controllers.MailboxController"
+            Shell.TabBarIsVisible = "False" >
+    
     <StackLayout>
         <Label Text="Hello Xamarin.Forms!" />
 
     </StackLayout>
-</ContentPage>
+</d:BasePage>

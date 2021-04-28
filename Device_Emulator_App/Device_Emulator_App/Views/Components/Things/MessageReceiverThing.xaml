@@ -1,12 +1,25 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Device_Emulator_App.Views.Components.Things.MessageReceiverThing">
-    
+<d:BasePage xmlns:d="clr-namespace:Device_Emulator_App.Views"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Device_Emulator_App.Views.Components.Things.MessageReceiverThing"
+            Shell.TabBarIsVisible = "False">
+
     <StackLayout>
-        <Button Text="Connect to server" Clicked="ClientConnect"/>
-        <Button Text="Send to server" Clicked="ClientSend"/>
-        <Label x:Name="MessageComponent" Text="{Binding DisplayedMessage}" />
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            
+            <Button Grid.Row="0" Grid.Column="0" Text="Send to Server" Clicked="ClientSend"/>
+            <Button Grid.Row="0" Grid.Column="1" Text="Clear Log" Clicked="ClearLog"/>
+
+            <ScrollView Grid.Row="1" Grid.ColumnSpan="2">
+                <ListView ItemsSource="{Binding MessageLog}" SeparatorVisibility="None" RowHeight="25" />
+            </ScrollView>
+        </Grid>
+        
     </StackLayout>
-    
-</ContentPage>
+
+</d:BasePage>

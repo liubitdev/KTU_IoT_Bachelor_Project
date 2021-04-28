@@ -42,6 +42,7 @@ namespace Device_Emulator_App.Models.Network
             if (ws.State == WebSocketState.Open)
             {
                 DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
+                DataReceived = null;
                 // Return if the socket is already open and running
                 return;
             }
@@ -49,6 +50,7 @@ namespace Device_Emulator_App.Models.Network
             {
                 await ws.ConnectAsync(new Uri(IP), CancellationToken.None);
                 DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
+                DataReceived = null;
                 socketTimer.Start();
                 ListenToSocket();
             }

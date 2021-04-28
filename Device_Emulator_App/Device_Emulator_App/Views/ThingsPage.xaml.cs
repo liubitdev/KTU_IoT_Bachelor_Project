@@ -37,7 +37,7 @@ namespace Device_Emulator_App.Views
             switch (DeviceModel.Group)
             {
                 case Models.Enums.EDeviceGroup.MESSAGE_RECEIVER:
-                    await Navigation.PushAsync(new MessageReceiverThing());
+                    await Navigation.PushAsync(new MessageReceiverThing(), true);
                     break;
                 case Models.Enums.EDeviceGroup.LIGHT:
                     await Navigation.PushAsync(new LightThing());

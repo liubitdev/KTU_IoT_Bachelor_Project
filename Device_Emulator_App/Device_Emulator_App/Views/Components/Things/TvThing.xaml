@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Device_Emulator_App.Views.Components.Things.TvThing">
+<d:BasePage xmlns:d="clr-namespace:Device_Emulator_App.Views"
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            x:Class="Device_Emulator_App.Views.Components.Things.TvThing"
+            Shell.TabBarIsVisible = "False">
 
     <StackLayout>
         <Grid x:Name="TvGrid" VerticalOptions="FillAndExpand" BackgroundColor="{Binding TvColor}">
@@ -21,4 +23,4 @@
         </Grid>
     </StackLayout>
 
-</ContentPage>
+</d:BasePage>
