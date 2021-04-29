@@ -15,12 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-# from core import views
 
 from . import apiviews
 
+from HubControlPanel import views
+
 urlpatterns = [
 #    path('admin/', admin.site.urls),
-    # path('', apiviews.rules_view)
-    # path('', views.Index.as_view(), name='index')
+    path('', views.Hub_Control_Panel_View, name='index'),
 ]
