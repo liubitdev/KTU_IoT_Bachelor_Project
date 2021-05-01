@@ -42,6 +42,9 @@ namespace Device_Emulator_App.Views
                 case Models.Enums.EDeviceGroup.FINGERSCANNER:
                     await Navigation.PushAsync(new FingerScannerController());
                     break;
+                case Models.Enums.EDeviceGroup.MAILBOX:
+                    await Navigation.PushAsync(new MailboxController());
+                    break;
                 case Models.Enums.EDeviceGroup.PINCODE:
                     await Navigation.PushAsync(new PinCodeController());
                     break;
@@ -64,9 +67,6 @@ namespace Device_Emulator_App.Views
             {
                 case "Button":
                     DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.CONTROLLER, Models.Enums.EDeviceGroup.BUTTON);
-                    break;
-                case "Clock":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.CONTROLLER, Models.Enums.EDeviceGroup.CLOCK);
                     break;
                 case "Finger Scanner":
                     DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.CONTROLLER, Models.Enums.EDeviceGroup.FINGERSCANNER);

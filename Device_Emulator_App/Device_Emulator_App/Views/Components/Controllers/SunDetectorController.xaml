@@ -8,7 +8,7 @@
     <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
         <Label Text="Control the sun!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
         <Label Text="{Binding SliderValue}" HorizontalTextAlignment="Center" />
-        <Slider x:Name="SliderInput" Minimum="0" Maximum="1" ValueChanged="SliderValueChanged"/>
+        <Slider AutomationId="SliderControl" x:Name="SliderInput" Minimum="0" Maximum="1" ValueChanged="SliderValueChanged"/>
         <BoxView BackgroundColor="{Binding BackgroundColor}" VerticalOptions="FillAndExpand"/>
     </StackLayout>
 

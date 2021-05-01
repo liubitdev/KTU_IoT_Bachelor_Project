@@ -5,9 +5,9 @@
             x:Class="Device_Emulator_App.Views.Components.Controllers.SwitchController"
             Shell.TabBarIsVisible = "False">
 
-    <StackLayout>
-        <Label Text="Switch" />
-        <Switch IsToggled="false" />
+    <StackLayout VerticalOptions="CenterAndExpand" Padding="25">
+        <Switch AutomationId="SwitchController" IsToggled="{Binding IsEnabled}" HorizontalOptions="Center" />
+        <Label Text="Switch your things!" HorizontalOptions="Center" />
     </StackLayout>
 
 </d:BasePage>
