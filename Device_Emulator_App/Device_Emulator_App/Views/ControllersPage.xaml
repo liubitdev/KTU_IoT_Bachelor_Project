@@ -5,7 +5,7 @@
 
     <StackLayout x:Name="ControllerLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
         <Label Text="Controller selection:" Padding="5"/>
-        <Picker x:Name="devicePicker"/>
+        <Picker x:Name="devicePicker" AutomationId="ControllersPicker"/>
         <Label x:Name="pickerDescription" />
         
         <Grid VerticalOptions="Fill" Padding="25">

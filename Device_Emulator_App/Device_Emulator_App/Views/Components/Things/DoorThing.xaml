@@ -7,6 +7,19 @@
     
     <StackLayout BackgroundColor="{Binding DoorColor}" VerticalOptions="FillAndExpand" HeightRequest="560">
         <Label Text="{Binding LabelText}" TextColor="{Binding LabelColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Open" Clicked="DoorOpenHandler"/>
+                <Button Text="Close" Clicked="DoorCloseHandler"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Knock" Clicked="DoorKnockHandler"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Unlock" Clicked="DoorUnlockHandler"/>
+                <Button Text="Lock" Clicked="DoorLockHandler"/>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
     
 </d:BasePage>

@@ -11,12 +11,12 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            
-            <Button Grid.Row="0" Grid.Column="0" Text="Send to Server" Clicked="ClientSend"/>
-            <Button Grid.Row="0" Grid.Column="1" Text="Clear Log" Clicked="ClearLog"/>
+
+            <!-- <Button Grid.Row="0" Grid.Column="0" Text="Send to Server" Clicked="ClientSend"/> -->
+            <Button Grid.Row="0" Grid.ColumnSpan="2" Text="Clear Log" Clicked="ClearLog"/>
 
             <ScrollView Grid.Row="1" Grid.ColumnSpan="2">
-                <ListView ItemsSource="{Binding MessageLog}" SeparatorVisibility="None" RowHeight="25" />
+                <ListView AutomationId="MessageListView" ItemsSource="{Binding MessageLog}" SeparatorVisibility="None" RowHeight="25" />
             </ScrollView>
         </Grid>
         

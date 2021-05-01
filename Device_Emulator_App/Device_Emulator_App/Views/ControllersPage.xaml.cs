@@ -71,6 +71,9 @@ namespace Device_Emulator_App.Views
                 case "Finger Scanner":
                     DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.CONTROLLER, Models.Enums.EDeviceGroup.FINGERSCANNER);
                     break;
+                case "Mailbox":
+                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.CONTROLLER, Models.Enums.EDeviceGroup.MAILBOX);
+                    break;
                 case "Pin Code":
                     DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.CONTROLLER, Models.Enums.EDeviceGroup.PINCODE);
                     break;
