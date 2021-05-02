@@ -7,6 +7,10 @@
     
     <StackLayout BackgroundColor="{Binding LightColor}" VerticalOptions="FillAndExpand" HeightRequest="560">
         <Label Text="{Binding LabelText}" TextColor="{Binding LabelColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            <Button Text="On" Clicked="TurnOnLight"/>
+            <Button Text="Off" Clicked="TurnOffLight"/>
+        </StackLayout>
     </StackLayout>
     
 </d:BasePage>

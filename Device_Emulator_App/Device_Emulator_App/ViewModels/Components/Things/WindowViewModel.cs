@@ -17,17 +17,23 @@ namespace Device_Emulator_App.ViewModels.Components.Things
             set
             {
                 SetProperty(ref isWindowOpen, value);
-                if (IsWindowOpen)
+                if (isBroken)
                 {
-                    WindowColor = Xamarin.Forms.Color.SandyBrown;
-                    LabelText = "Window is open!";
+                    WindowColor = Xamarin.Forms.Color.Gray;
+                    LabelText = "Window is Broken!";
+                    LabelColor = Xamarin.Forms.Color.Black;
+                }
+                else if (IsWindowOpen)
+                {
+                    WindowColor = Xamarin.Forms.Color.White;
+                    LabelText = "Window is Open!";
                     LabelColor = Xamarin.Forms.Color.Black;
 
                 }
                 else
                 {
-                    WindowColor = Xamarin.Forms.Color.SaddleBrown;
-                    LabelText = "Window is closed!";
+                    WindowColor = Xamarin.Forms.Color.Black;
+                    LabelText = "Window is Closed!";
                     LabelColor = Xamarin.Forms.Color.White;
                 }
             }
@@ -97,11 +103,13 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         public void BreakWindow()
         {
             IsBroken = true;
+            IsWindowOpen = true;
         }
 
         public void FixWindow()
         {
             IsBroken = false;
+            IsWindowOpen = false;
         }
 
     }

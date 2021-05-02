@@ -5,7 +5,7 @@
     
     <StackLayout x:Name="ThingsLayout" VerticalOptions="Fill" HorizontalOptions="Fill">
         <Label Text="Thing selection:" Padding="5"/>
-        <Picker x:Name="devicePicker"/>
+        <Picker x:Name="devicePicker" AutomationId="ThingsPicker"/>
         <Label x:Name="pickerDescription" />
         
         <Grid VerticalOptions="Fill" Padding="25">

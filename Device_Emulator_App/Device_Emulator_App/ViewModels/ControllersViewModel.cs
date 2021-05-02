@@ -17,8 +17,8 @@ namespace Device_Emulator_App.ViewModels
         {
             Lines = new List<string>();
             Lines.Add("Button");
-            Lines.Add("Clock");
             Lines.Add("Finger Scanner");
+            Lines.Add("Mailbox");
             Lines.Add("Pin Code");
             Lines.Add("Sun Detector");
             Lines.Add("Switch");

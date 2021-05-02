@@ -10,7 +10,7 @@ namespace Device_Emulator_App.Views
             Device.BeginInvokeOnMainThread(async () => {
                 if (await DisplayAlert("Warning!", "Do you really want to exit?", "Yes", "No"))
                 {
-                    //DeviceModel.ClearSubscriptions();
+                    DeviceModel.ClearSubscriptions();
                     await Navigation.PopAsync();
                 }
             });

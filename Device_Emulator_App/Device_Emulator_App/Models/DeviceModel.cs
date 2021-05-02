@@ -51,7 +51,6 @@ namespace Device_Emulator_App.Models
         {
             // TODO: Send updated info to server
             // v Send JSON v
-            //Console.WriteLine("Hello world!");
             await WebSocket.SendData((string)json);
         }
 

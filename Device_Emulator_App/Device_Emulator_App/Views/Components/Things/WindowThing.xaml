@@ -5,8 +5,17 @@
             x:Class="Device_Emulator_App.Views.Components.Things.WindowThing"
             Shell.TabBarIsVisible = "False">
 
-    <StackLayout>
-        <Label Text="Hello Xamarin.Forms!" />
+    <StackLayout BackgroundColor="{Binding WindowColor}" VerticalOptions="FillAndExpand" HeightRequest="560">
+        <Label Text="{Binding LabelText}" TextColor="{Binding LabelColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Open" Clicked="WindowOpenHandler"/>
+                <Button Text="Close" Clicked="WindowCloseHandler"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                <Button Text="Break" Clicked="WindowBreakHandler"/>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
 
 </d:BasePage>

@@ -7,7 +7,7 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 {
     public class DoorViewModel : BaseViewModel
     {
-        string labelText = "Door is closed!";
+        string labelText = "Door is closed and Locked!";
         public string LabelText
         {
             get { return labelText; }
@@ -27,9 +27,22 @@ namespace Device_Emulator_App.ViewModels.Components.Things
                 } else
                 {
                     DoorColor = Xamarin.Forms.Color.SaddleBrown;
-                    LabelText = "Door is closed!";
+                    if(IsDoorUnlocked) LabelText = "Door is Closed and Unlocked!";
+                    else LabelText = "Door is Closed and Locked!";
                     LabelColor = Xamarin.Forms.Color.White;
                 }
+            }
+        }
+
+        bool isDoorUnLocked = false;
+        public bool IsDoorUnlocked
+        {
+            get { return isDoorUnLocked; }
+            set
+            {
+                SetProperty(ref isDoorUnLocked, value);
+                if(value) LabelText = "Door is Closed and Unlocked!";
+                else LabelText = "Door is Closed and Locked!";
             }
         }
 
@@ -58,6 +71,7 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         public DoorViewModel()
         {
             CloseDoor();
+            LockDoor();
 
             DeviceModel.StatesChanged += (sender, data) =>
             {
@@ -84,13 +98,25 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         public void OpenDoor()
         {
             // TODO: Make call to "DeviceModel" object instead
-            IsDoorOpen = true;
+            if(IsDoorUnlocked)
+                IsDoorOpen = true;
         }
 
         public void CloseDoor()
         {
             // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = false;
+        }
+
+        public void UnlockDoor()
+        {
+            IsDoorUnlocked = true;
+        }
+
+        public void LockDoor()
+        {
+            if(!IsDoorOpen)
+                IsDoorUnlocked = false;
         }
 
         public void Knock()

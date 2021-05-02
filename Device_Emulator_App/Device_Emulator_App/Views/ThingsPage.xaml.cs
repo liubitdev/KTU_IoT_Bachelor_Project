@@ -62,23 +62,20 @@ namespace Device_Emulator_App.Views
 
             switch (devicePicker.SelectedItem.ToString())
             {
-                case "Message Receiver":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.MESSAGE_RECEIVER);
+                case "Door":
+                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.DOOR);
                     break;
                 case "Light":
                     DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.LIGHT);
                     break;
-                case "Window":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.WINDOW);
-                    break;
-                case "Door":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.DOOR);
+                case "Message Receiver":
+                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.MESSAGE_RECEIVER);
                     break;
                 case "TV":
                     DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.TV);
                     break;
-                case "Mailbox":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.MAILBOX);
+                case "Window":
+                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.WINDOW);
                     break;
                 default:
                     await DisplayAlert("Sorry!", "Invalid selected item!", "OK");

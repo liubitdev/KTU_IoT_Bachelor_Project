@@ -20,19 +20,20 @@ namespace Device_Emulator_App.Views.Components.Things
             BindingContext = context;
         }
 
-        public void ToggleLight()
+        public void ToggleLight(object sender, EventArgs e)
         {
             context.IsLightOn = !context.IsLightOn;
         }
 
-        public void TurnOnLight()
+        public void TurnOnLight(object sender, EventArgs e)
         {
             context.IsLightOn = true;
         }
 
-        public void TurnOffLight()
+        public void TurnOffLight(object sender, EventArgs e)
         {
             context.IsLightOn = false;
         }
+
     }
 }

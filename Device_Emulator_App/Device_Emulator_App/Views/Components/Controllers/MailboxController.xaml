@@ -4,9 +4,12 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             x:Class="Device_Emulator_App.Views.Components.Controllers.MailboxController"
             Shell.TabBarIsVisible = "False" >
-    
-    <StackLayout>
-        <Label Text="Hello Xamarin.Forms!" />
 
+    <StackLayout BackgroundColor="{Binding ViewColor}" VerticalOptions="FillAndExpand" HeightRequest="560">
+        <Label Text="{Binding LabelText}" TextColor="{Binding LabelColor}" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+            <Button Text="Fill with Parcel" Clicked="PutInParcel"/>
+        </StackLayout>
     </StackLayout>
+    
 </d:BasePage>
