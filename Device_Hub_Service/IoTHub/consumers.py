@@ -1,17 +1,22 @@
-import json
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import JsonWebsocketConsumer
+from .utils import registerDevice
+from .models import ThingDevice, ControllerDevice
 
-class IoTConsumer(WebsocketConsumer):
-    def connect(self):
-        self.accept()
 
-    def disconnect(self, close_code):
-        pass
+class IoTRegisterConsumer(JsonWebsocketConsumer):
+    def receive_json(self, content, **kwargs):
+        device = registerDevice(content)
+        response = []
+        if isinstance(device, ControllerDevice):
+            response['result'] = "New Controller Registered."
+        elif isinstance(device, ThingDevice):
+            response['result'] = "New Thing Registered."
+        else:
+            response['result'] = "Registration unsuccessful, check JSON syntax."
 
-    def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
 
-        self.send(text_data=json.dumps({
-            'message': message
-        }))
+
+class IoTPollConsumer(JsonWebsocketConsumer):
+    async def websocket_connect(self, message):
+        user = self.scope["user"]
+        await self.accept()
