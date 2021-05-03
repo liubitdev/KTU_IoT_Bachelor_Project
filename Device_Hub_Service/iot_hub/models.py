@@ -3,6 +3,13 @@ from django.db import models
 
 class IoTDevice(models.Model):
     name = models.TextField()
+    registered_at = models.DateTimeField(auto_now_add=True)
+    verified_at = models.DateTimeField()
+    verified_by = models.ForeignKey("auth.User", on_delete=models.CASCADE, null=True)
+    last_seen = models.DateTimeField()
+
+    class Meta:
+        abstract = True
 
 
 class ControllerDevice(IoTDevice):
@@ -31,16 +38,19 @@ class Parameter(models.Model):
 
 
 class Behavior(models.Model):
-    pass
+    created_by = models.ForeignKey("auth.User", on_delete=models.CASCADE)
 
 
 class Trigger(models.Model):
     behavior = models.ForeignKey("Behavior", on_delete=models.CASCADE)
 
+    class Meta:
+        abstract = True
 
-class StateTrigger(models.Model):
+
+class StateTrigger(Trigger):
     state = models.ForeignKey("State", on_delete=models.CASCADE)
 
 
-class DateTrigger(models.Model):
+class DateTrigger(Trigger):
     when = models.DateTimeField()
