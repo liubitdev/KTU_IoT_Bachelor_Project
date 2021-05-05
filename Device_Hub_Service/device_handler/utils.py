@@ -1,4 +1,4 @@
-from .models import \
+from iot_hub.models import \
     ThingDevice,\
     ControllerDevice,\
     State,\

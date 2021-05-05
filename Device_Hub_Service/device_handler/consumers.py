@@ -1,6 +1,6 @@
 from channels.generic.websocket import JsonWebsocketConsumer
-from .utils import registerDevice
-from .models import ThingDevice, ControllerDevice
+from device_handler.utils import registerDevice
+from iot_hub.models import ThingDevice, ControllerDevice
 
 
 class IoTRegisterConsumer(JsonWebsocketConsumer):
@@ -14,6 +14,9 @@ class IoTRegisterConsumer(JsonWebsocketConsumer):
         else:
             response['result'] = "Registration unsuccessful, check JSON syntax."
 
+
+class IoTLoginConsumer(JsonWebsocketConsumer):
+    pass
 
 
 class IoTPollConsumer(JsonWebsocketConsumer):
