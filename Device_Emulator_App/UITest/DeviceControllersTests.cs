@@ -97,7 +97,7 @@ namespace UITest
         [Test]
         public void CreatePinCodeControllerTest()
         {
-            app.Repl();
+            //app.Repl();
             app.Tap(c => c.Text("Controllers"));
             app.WaitForElement(c => c.Marked("ControllersPicker"));
             app.Tap(c => c.Marked("ControllersPicker"));

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Device_Emulator_App.Models.Enums;
 using Device_Emulator_App.Models.Interfaces;
@@ -17,16 +18,25 @@ namespace Device_Emulator_App.Models
         public static EDeviceGroup Group { get; set; }
         public static WebSockets WebSocket { get; set; }
         public static Dictionary<string, string> States { get; set; }
-
         public static event EventHandler<Dictionary<string, string>> StatesChanged = null;
-        
         public static ISubscribable DeviceObject = null;
+
         public static void Configure(string name, EDeviceType type, EDeviceGroup group)
         {
             Name = name;
             Type = type;
             Group = group;
             if(WebSocket == null) WebSocket = new WebSockets();
+            States = new Dictionary<string, string>();
+            StatesChanged = null;
+        }
+
+        public static void Configure(Uri ip, string name, EDeviceType type, EDeviceGroup group)
+        {
+            Name = name;
+            Type = type;
+            Group = group;
+            if (WebSocket == null) WebSocket = new WebSockets(ip);
             States = new Dictionary<string, string>();
             StatesChanged = null;
         }
@@ -96,6 +106,12 @@ namespace Device_Emulator_App.Models
             //{
                 StatesChanged?.Invoke(WebSockets.IP, States);
             //}
+        }
+
+        public static void Disconnect()
+        {
+            NetworkState = EDeviceNetworkState.OFFLINE;
+            WebSocket.CloseConnection();
         }
 
     }

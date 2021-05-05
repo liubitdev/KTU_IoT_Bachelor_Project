@@ -2,7 +2,6 @@
 using System.Net.Http;
 using Device_Emulator_App.Models;
 using Device_Emulator_App.Models.Network;
-using Device_Emulator_App.Services;
 using Device_Emulator_App.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

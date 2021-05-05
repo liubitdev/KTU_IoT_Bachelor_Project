@@ -6,5 +6,6 @@ namespace Device_Emulator_App.ViewModels.Components.Controllers
 {
     class FingerScannerViewModel
     {
+
     }
 }

@@ -10,7 +10,7 @@ namespace Device_Emulator_App.Models.Network
     public class WebSockets : IDisposable
     {
         public static event EventHandler<string> DataReceived = null;
-        public static string IP { get; set; } = "ws://10.0.2.2:8000/";
+        public static Uri IP { get; set; } = new Uri("ws://10.0.2.2:8000/");
 
         private static ClientWebSocket ws = null;
         private static System.Timers.Timer socketTimer = new System.Timers.Timer(5000);
@@ -22,14 +22,9 @@ namespace Device_Emulator_App.Models.Network
             DeviceModel.NetworkState = Enums.EDeviceNetworkState.OFFLINE;
         }
 
-        public WebSockets(string ipAddress) : this()
+        public WebSockets(Uri ipAddress) : this()
         {
             IP = ipAddress;
-        }
-
-        public WebSockets(string ipAddress, string port) : this(IP)
-        {
-            IP = ipAddress + ":" + port;
         }
 
         public async Task EstablishConnection()
@@ -48,7 +43,7 @@ namespace Device_Emulator_App.Models.Network
             }
             if (ws.State == WebSocketState.None)
             {
-                await ws.ConnectAsync(new Uri(IP), CancellationToken.None);
+                await ws.ConnectAsync(IP, CancellationToken.None);
                 DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
                 DataReceived = null;
                 socketTimer.Start();
