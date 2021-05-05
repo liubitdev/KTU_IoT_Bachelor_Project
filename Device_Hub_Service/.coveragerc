@@ -1,0 +1,3 @@
+[run]
+source = .
+omit = *migrations*, *venv*, *.idea*, manage.py, iot_hub/settings.py, iot_hub/asgi.py, iot_hub/middleware.py

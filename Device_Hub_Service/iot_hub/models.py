@@ -4,7 +4,7 @@ from django.db import models
 class IoTDevice(models.Model):
     name = models.TextField()
     registered_at = models.DateTimeField(auto_now_add=True)
-    verified_at = models.DateTimeField()
+    verified_at = models.DateTimeField(blank=True, null=True)
     verified_by = models.ForeignKey("auth.User", on_delete=models.CASCADE, null=True)
     last_seen = models.DateTimeField()
 

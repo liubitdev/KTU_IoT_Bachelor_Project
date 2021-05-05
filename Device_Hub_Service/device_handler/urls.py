@@ -1,11 +1,10 @@
 from channels.routing import URLRouter
 from django.urls import path
 from iot_hub.middleware import JWTAuthMiddlewareStack
-from .consumers import IoTRegisterConsumer,\
-    IoTLoginConsumer,\
-    IoTPollConsumer
+from .consumers import DeviceConsumer, EchoConsumer
 
 
-websocket_patterns = JWTAuthMiddlewareStack(URLRouter([
-    path("", IoTPollConsumer.as_asgi())
+websocket_patterns = (URLRouter([
+    path("api/poll/", DeviceConsumer.as_asgi()),
+    path("api/echo/", EchoConsumer.as_asgi())
 ]))

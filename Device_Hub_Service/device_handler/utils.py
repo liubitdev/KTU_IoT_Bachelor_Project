@@ -5,7 +5,6 @@ from iot_hub.models import \
     Function,\
     Parameter
 
-
 def registerDevice(content):
     """
     Example JSON of a Thing-type device wanting to register.
