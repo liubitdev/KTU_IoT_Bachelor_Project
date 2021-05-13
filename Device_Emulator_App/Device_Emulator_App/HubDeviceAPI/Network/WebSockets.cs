@@ -5,21 +5,24 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace Device_Emulator_App.Models.Network
+namespace Device_Emulator_App.HubDeviceAPI.Network
 {
     public class WebSockets : IDisposable
     {
+        // Event which fires every time a new packet is received
         public static event EventHandler<string> DataReceived = null;
+        // Server's IP address which client is connecting to
         public static Uri IP { get; set; } = new Uri("ws://10.0.2.2:8000/");
-
+        // WebSocket client object
         private static ClientWebSocket ws = null;
+        // Timer for client to send an update/keep-alive message
         private static System.Timers.Timer socketTimer = new System.Timers.Timer(5000);
+        // Message which will be repeatedly sent to the server to ensure that the connection is alive
         private static string keepAliveMessage = "{\"message\":\"online\"}";
 
         public WebSockets()
         {
             socketTimer.Elapsed += SocketTimerElapsed;
-            DeviceModel.NetworkState = Enums.EDeviceNetworkState.OFFLINE;
         }
 
         public WebSockets(Uri ipAddress) : this()
@@ -27,28 +30,27 @@ namespace Device_Emulator_App.Models.Network
             IP = ipAddress;
         }
 
-        public async Task EstablishConnection()
+        public async Task<int> EstablishConnection()
         {
-            DeviceModel.NetworkState = Enums.EDeviceNetworkState.CONNECTING;
             if (ws == null)
             {
                 ws = new ClientWebSocket();
             }
             if (ws.State == WebSocketState.Open)
             {
-                DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
                 DataReceived = null;
                 // Return if the socket is already open and running
-                return;
+                return 1;
             }
             if (ws.State == WebSocketState.None)
             {
                 await ws.ConnectAsync(IP, CancellationToken.None);
-                DeviceModel.NetworkState = Enums.EDeviceNetworkState.ONLINE;
                 DataReceived = null;
                 socketTimer.Start();
                 ListenToSocket();
+                return 1;
             }
+            return -1;
         }
 
         public async Task SendData(string jsonData)
@@ -105,7 +107,6 @@ namespace Device_Emulator_App.Models.Network
 
         private void HandleOfflineRequest()
         {
-            DeviceModel.NetworkState = Enums.EDeviceNetworkState.OFFLINE;
             DataReceived?.Invoke(this, "No connection to server.");
             return;
         }
@@ -125,7 +126,7 @@ namespace Device_Emulator_App.Models.Network
             if (ws == null)
             {
                 // If the client is not connected to the HUB yet
-                EstablishConnection();
+                await EstablishConnection();
             }
             else
             {

@@ -3,13 +3,16 @@ using Xamarin.Forms;
 using Device_Emulator_App.Views.Components.Things;
 using Device_Emulator_App.ViewModels;
 using Device_Emulator_App.Models;
+using Device_Emulator_App.Models.Enums;
 
 namespace Device_Emulator_App.Views
 {
     public partial class ThingsPage : ContentPage
     {
+        public static ThingDeviceModel deviceModel = new ThingDeviceModel();
+
         private ThingsViewModel context = new ThingsViewModel();
-        private string selectionName;
+        private EDeviceType selectionType;
         public ThingsPage()
         {
             InitializeComponent();
@@ -29,27 +32,45 @@ namespace Device_Emulator_App.Views
 
         private async void ConfirmButtonHandler(object sender, EventArgs e)
         {
-            if (DeviceModel.Group == Models.Enums.EDeviceGroup.NONE) return;
-            await DeviceModel.Create();
-
-            if (DeviceModel.NetworkState != Models.Enums.EDeviceNetworkState.ONLINE) return;
-
-            switch (DeviceModel.Group)
+            if (selectionType == EDeviceType.NONE)
             {
-                case Models.Enums.EDeviceGroup.MESSAGE_RECEIVER:
+                await DisplayAlert("Selection not found", "Please select a device which you want to simulate from the list!", "Gotcha!");
+                return;
+            }
+
+            // TODO: Move to switch statement cases
+            // TODO: Add possible funcions list to every Thing Configuration
+            deviceModel.ConfigureThing(selectionType);
+            try
+            {
+                Uri ipAddress = new Uri(ipAdressInput.Text + ":" + portInput.Text);
+                if (await deviceModel.ConnectToServer(ipAddress) != 1)
+                {
+                    throw new Exception();
+                }
+            }
+            catch
+            {
+                await DisplayAlert("Error", "Couldn't connect to the server :(", "Okay :(");
+                return;
+            }
+
+            switch (deviceModel.Type)
+            {
+                case EDeviceType.MESSAGE_RECEIVER:
                     await Navigation.PushAsync(new MessageReceiverThing(), true);
                     break;
-                case Models.Enums.EDeviceGroup.LIGHT:
-                    await Navigation.PushAsync(new LightThing());
+                case EDeviceType.LIGHT:
+                    await Navigation.PushAsync(new LightThing(), true);
                     break;
-                case Models.Enums.EDeviceGroup.WINDOW:
-                    await Navigation.PushAsync(new WindowThing());
+                case EDeviceType.WINDOW:
+                    await Navigation.PushAsync(new WindowThing(), true);
                     break;
-                case Models.Enums.EDeviceGroup.DOOR:
-                    await Navigation.PushAsync(new DoorThing());
+                case EDeviceType.DOOR:
+                    await Navigation.PushAsync(new DoorThing(), true);
                     break;
-                case Models.Enums.EDeviceGroup.TV:
-                    await Navigation.PushAsync(new TvThing());
+                case EDeviceType.TV:
+                    await Navigation.PushAsync(new TvThing(), true);
                     break;
                 default:
                     break;
@@ -58,24 +79,22 @@ namespace Device_Emulator_App.Views
 
         private async void HandlePickerItemChange(object sender, EventArgs e)
         {
-            selectionName = devicePicker.SelectedItem.ToString();
-
             switch (devicePicker.SelectedItem.ToString())
             {
                 case "Door":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.DOOR);
+                    selectionType = EDeviceType.DOOR;
                     break;
                 case "Light":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.LIGHT);
+                    selectionType = EDeviceType.LIGHT;
                     break;
                 case "Message Receiver":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.MESSAGE_RECEIVER);
+                    selectionType = EDeviceType.MESSAGE_RECEIVER;
                     break;
                 case "TV":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.TV);
+                    selectionType = EDeviceType.TV;
                     break;
                 case "Window":
-                    DeviceModel.Configure(selectionName, Models.Enums.EDeviceType.THING, Models.Enums.EDeviceGroup.WINDOW);
+                    selectionType = EDeviceType.WINDOW;
                     break;
                 default:
                     await DisplayAlert("Sorry!", "Invalid selected item!", "OK");

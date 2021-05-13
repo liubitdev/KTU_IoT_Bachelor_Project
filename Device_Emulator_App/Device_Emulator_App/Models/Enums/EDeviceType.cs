@@ -2,7 +2,22 @@
 {
     public enum EDeviceType
     {
-        CONTROLLER,
-        THING,
+        NONE,
+
+        // Controller
+        BUTTON,
+        CLOCK,
+        FINGERSCANNER,
+        PINCODE,
+        SUNDETECTOR,
+        SWITCH,
+
+        // Thing
+        DOOR,
+        LIGHT,
+        MAILBOX,
+        MESSAGE_RECEIVER,
+        TV,
+        WINDOW,
     }
 }

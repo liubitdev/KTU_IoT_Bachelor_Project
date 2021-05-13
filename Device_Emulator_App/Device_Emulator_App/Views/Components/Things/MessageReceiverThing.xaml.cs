@@ -16,17 +16,16 @@ namespace Device_Emulator_App.Views.Components.Things
         {
             InitializeComponent();
 
+            ThingsPage.deviceModel.MessageReceived += ReceiveMessage;
+
             BindingContext = context;
         }
 
         private void ReceiveMessage(object sender, object data)
         {
-            context.AddMessage(sender, JsonConvert.SerializeObject(data));
-        }
-
-        private void ClientSend(object sender, EventArgs e)
-        {
-            DeviceModel.Update(context, "{\"message\":\"Hello World!\"}");
+            if(data.GetType() != typeof(string))
+                context.AddMessage(sender, JsonConvert.SerializeObject(data));
+            else context.AddMessage(sender, data);
         }
 
         private void ClearLog(object sender, EventArgs e)

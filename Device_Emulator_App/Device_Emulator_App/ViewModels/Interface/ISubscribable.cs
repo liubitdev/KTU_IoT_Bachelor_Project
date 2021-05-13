@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Device_Emulator_App.Models.Interfaces
+namespace Device_Emulator_App.HubDeviceAPI.Interfaces
 {
     public interface ISubscribable
     {

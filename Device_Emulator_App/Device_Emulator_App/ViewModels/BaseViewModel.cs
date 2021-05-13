@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Device_Emulator_App.Models.Interfaces;
+using Device_Emulator_App.HubDeviceAPI.Interfaces;
 
 namespace Device_Emulator_App.ViewModels
 {

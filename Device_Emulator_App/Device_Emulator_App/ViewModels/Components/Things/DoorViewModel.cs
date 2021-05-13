@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Device_Emulator_App.Models;
+using Device_Emulator_App.Views;
 
 namespace Device_Emulator_App.ViewModels.Components.Things
 {
@@ -17,17 +18,20 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         public bool IsDoorOpen
         {
             get { return isDoorOpen; }
-            set { SetProperty(ref isDoorOpen, value);
+            set
+            {
+                SetProperty(ref isDoorOpen, value);
                 if (IsDoorOpen)
                 {
                     DoorColor = Xamarin.Forms.Color.SandyBrown;
                     LabelText = "Door is open!";
                     LabelColor = Xamarin.Forms.Color.Black;
 
-                } else
+                }
+                else
                 {
                     DoorColor = Xamarin.Forms.Color.SaddleBrown;
-                    if(IsDoorUnlocked) LabelText = "Door is Closed and Unlocked!";
+                    if (IsDoorUnlocked) LabelText = "Door is Closed and Unlocked!";
                     else LabelText = "Door is Closed and Locked!";
                     LabelColor = Xamarin.Forms.Color.White;
                 }
@@ -41,7 +45,7 @@ namespace Device_Emulator_App.ViewModels.Components.Things
             set
             {
                 SetProperty(ref isDoorUnLocked, value);
-                if(value) LabelText = "Door is Closed and Unlocked!";
+                if (value) LabelText = "Door is Closed and Unlocked!";
                 else LabelText = "Door is Closed and Locked!";
             }
         }
@@ -67,44 +71,35 @@ namespace Device_Emulator_App.ViewModels.Components.Things
             set { SetProperty(ref isKnocked, value); }
         }
 
-
         public DoorViewModel()
         {
             CloseDoor();
             LockDoor();
 
-            DeviceModel.StatesChanged += (sender, data) =>
-            {
-                if (data.ContainsKey("enabled"))
-                {
-                    if (data["enabled"] == "true")
-                    {
-                        OpenDoor();
-                    }
-                    else
-                    {
-                        CloseDoor();
-                    }
-                }
-            };
+            ThingsPage.deviceModel.MessageReceived += ReceiveMessage;
+        }
+
+        private void ReceiveMessage(object sender, string message)
+        {
+            // TODO: Implement more accurate received message handling
+            if (message.GetType() == typeof(string))
+                ToggleDoor();
+
         }
 
         public void ToggleDoor()
         {
-            // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = !IsDoorOpen;
         }
 
         public void OpenDoor()
         {
-            // TODO: Make call to "DeviceModel" object instead
-            if(IsDoorUnlocked)
+            if (IsDoorUnlocked)
                 IsDoorOpen = true;
         }
 
         public void CloseDoor()
         {
-            // TODO: Make call to "DeviceModel" object instead
             IsDoorOpen = false;
         }
 
@@ -115,7 +110,7 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 
         public void LockDoor()
         {
-            if(!IsDoorOpen)
+            if (!IsDoorOpen)
                 IsDoorUnlocked = false;
         }
 
