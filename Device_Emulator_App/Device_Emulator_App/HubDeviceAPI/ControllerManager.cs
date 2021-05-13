@@ -7,24 +7,34 @@ namespace Device_Emulator_App.HubDeviceAPI
 {
     public abstract class ControllerManager : IController
     {
-        private WebSockets websockets;
+        private static WebSockets websockets;
 
-        virtual public async Task<int> ConnectToServer(string ipAddress)
+        virtual public async Task<int> ConnectToServer(Uri ipAddress)
         {
-            websockets = new WebSockets(new Uri(ipAddress));
-            return await websockets.EstablishConnection();
+            int result = 0;
+            try
+            {
+                websockets = new WebSockets(ipAddress);
+                result = await websockets.EstablishConnection();
+                //if (result == 1) WebSockets.DataReceived += ReceiveMessage;
+            }
+            catch
+            {
+                result = -1;
+            }
+            return result;
         }
 
         abstract public void ConfigureController(Models.Enums.EDeviceType type);
 
-        public async void SendMessage(string json)
-        {
-            await websockets.SendData(json);
-        }
-
         public void Disconnect()
         {
             websockets.CloseConnection();
+        }
+
+        public async void SendMessage(string json)
+        {
+            await websockets.SendData(json);
         }
 
     }

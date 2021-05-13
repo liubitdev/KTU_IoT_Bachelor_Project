@@ -15,6 +15,7 @@ namespace Device_Emulator_App.Models
         public string Password { get; set; }
         public EDeviceNetworkState State { get; set; }
         public EDeviceType Type { get; set; }
+        public List<string> ActionList { get; set; }
 
         public event EventHandler<string> MessageReceived = null;
 
@@ -28,19 +29,21 @@ namespace Device_Emulator_App.Models
 
         public override void ConfigureThing(EDeviceType type)
         {
-            Name = type.ToString().ToLower() + RandomGenerator.GenerateRandomString(8);
+            Name = type.ToString().ToLower() + "-" + RandomGenerator.GenerateRandomString(8);
             Type = type;
             State = EDeviceNetworkState.UNDEFINED;
+        }
+
+        public void SetActions(List<string> actions)
+        {
+            ActionList = actions;
         }
 
         public override void ReceiveMessage(object sender, string message)
         {
             // TODO: Handle handshake with server here
-
             MessageReceived?.Invoke(sender, message);
         }
-
-        
 
     }
 }

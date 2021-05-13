@@ -12,5 +12,6 @@ namespace Device_Emulator_App.HubDeviceAPI.Interfaces
         string Password { set; get; }
         EDeviceNetworkState State { set; get; }
         EDeviceType Type { set; get; }
+        List<string> ActionList { get; set; }
     }
 }

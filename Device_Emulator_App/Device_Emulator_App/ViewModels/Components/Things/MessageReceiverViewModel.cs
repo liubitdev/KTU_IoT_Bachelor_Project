@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.ObjectModel;
 using Device_Emulator_App.Models;
+using Device_Emulator_App.Views;
 using Newtonsoft.Json;
 
 namespace Device_Emulator_App.ViewModels.Components.Things
@@ -18,7 +19,7 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         {
             MessageLog = new ObservableCollection<string>();
 
-            DeviceModel.StatesChanged += AddMessage;
+            ThingsPage.deviceModel.MessageReceived += AddMessage;
         }
 
         public void ClearLog()
@@ -28,7 +29,17 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 
         public void AddMessage(object sender, object data)
         {
-            MessageLog.Add(JsonConvert.SerializeObject(data));
+            if (data.GetType() != typeof(string))
+                messageLog.Add(JsonConvert.SerializeObject(data));
+            else
+            {
+                string message = data.ToString()
+                    .Replace("\\", "")
+                    .Replace("\"", "")
+                    .Replace("{", "")
+                    .Replace("}", "");
+                messageLog.Add(message);
+            }
         }
 
     }

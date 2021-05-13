@@ -9,10 +9,10 @@ namespace Device_Emulator_App.Views
 {
     public partial class ControllersPage : ContentPage
     {
-        public static ControllerDeviceModel deviceModel;
+        public static ControllerDeviceModel deviceModel = new ControllerDeviceModel();
 
         private ControllersViewModel context = new ControllersViewModel();
-        private string selectionName;
+        private EDeviceType selectionType;
         public ControllersPage()
         {
             InitializeComponent();
@@ -32,14 +32,30 @@ namespace Device_Emulator_App.Views
 
         private async void ConfirmButtonHandler(object sender, EventArgs e)
         {
-            deviceModel = new ControllerDeviceModel();
+            if (selectionType == EDeviceType.NONE)
+            {
+                await DisplayAlert("Selection not found", "Please select a device which you want to simulate from the list!", "Gotcha!");
+                return;
+            }
 
-            if (DeviceModel.Type == EDeviceType.NONE) return;
-            await DeviceModel.Create();
+            // TODO: Move to switch statement cases
+            // TODO: Add possible funcions list to every Thing Configuration
+            deviceModel.ConfigureController(selectionType);
+            try
+            {
+                Uri ipAddress = new Uri(ipAdressInput.Text + ":" + portInput.Text);
+                if (await deviceModel.ConnectToServer(ipAddress) != 1)
+                {
+                    throw new Exception();
+                }
+            }
+            catch
+            {
+                await DisplayAlert("Error", "Couldn't connect to the server :(", "Okay :(");
+                return;
+            }
 
-            if (DeviceModel.NetworkState != Models.Enums.EDeviceNetworkState.ONLINE) return;
-
-            switch (DeviceModel.Type)
+            switch (deviceModel.Type)
             {
                 case EDeviceType.BUTTON:
                     await Navigation.PushAsync(new ButtonController());
@@ -66,27 +82,25 @@ namespace Device_Emulator_App.Views
 
         private async void HandlePickerItemChange(object sender, EventArgs e)
         {
-            selectionName = devicePicker.SelectedItem.ToString();
-
             switch (devicePicker.SelectedItem.ToString())
             {
                 case "Button":
-                    deviceModel.ConfigureController(EDeviceType.BUTTON);
+                    selectionType = EDeviceType.BUTTON;
                     break;
                 case "Finger Scanner":
-                    deviceModel.ConfigureController(EDeviceType.FINGERSCANNER);
+                    selectionType = EDeviceType.FINGERSCANNER;
                     break;
                 case "Mailbox":
-                    deviceModel.ConfigureController(EDeviceType.MAILBOX);
+                    selectionType = EDeviceType.MAILBOX;
                     break;
                 case "Pin Code":
-                    deviceModel.ConfigureController(EDeviceType.PINCODE);
+                    selectionType = EDeviceType.PINCODE;
                     break;
                 case "Sun Detector":
-                    deviceModel.ConfigureController(EDeviceType.SUNDETECTOR);
+                    selectionType = EDeviceType.SUNDETECTOR;
                     break;
                 case "Switch":
-                    deviceModel.ConfigureController(EDeviceType.SWITCH);
+                    selectionType = EDeviceType.SWITCH;
                     break;
                 default:
                     await DisplayAlert("Sorry!", "Invalid selected item!", "OK");

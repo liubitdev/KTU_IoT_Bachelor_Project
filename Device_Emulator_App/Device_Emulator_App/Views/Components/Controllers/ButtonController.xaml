@@ -5,5 +5,5 @@
             x:Class="Device_Emulator_App.Views.Components.Controllers.ButtonController"
             Shell.TabBarIsVisible = "False">
 
-    <Button Text="Activate" HorizontalOptions="Center" VerticalOptions="Center"/>
+    <Button Text="Activate" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ButtonClickHandler"/>
 </d:BasePage>

@@ -87,6 +87,11 @@ namespace Device_Emulator_App.ViewModels.Components.Things
 
         }
 
+        private void NotifyState()
+        {
+            ThingsPage.deviceModel.NotifyState("{\"message\":\"knocked!\"}");
+        }
+
         public void ToggleDoor()
         {
             IsDoorOpen = !IsDoorOpen;
@@ -117,6 +122,7 @@ namespace Device_Emulator_App.ViewModels.Components.Things
         public void Knock()
         {
             IsKnocked = true;
+            NotifyState();
         }
 
     }

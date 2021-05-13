@@ -4,7 +4,7 @@ using System.Text;
 using Device_Emulator_App.HubDeviceAPI;
 using Device_Emulator_App.HubDeviceAPI.Interfaces;
 using Device_Emulator_App.Models.Enums;
-using Newtonsoft.Json;
+using Device_Emulator_App.Models.Utils;
 
 namespace Device_Emulator_App.Models
 {
@@ -15,43 +15,29 @@ namespace Device_Emulator_App.Models
         public string Password { get; set; }
         public EDeviceNetworkState State { get; set; }
         public EDeviceType Type { get; set; }
+        public List<string> ActionList { get; set; }
 
-        private List<string> ActionList;
-        //public event EventHandler<Dictionary<string, string>> StateChanged = null;
-        public ISubscribable DeviceObject = null;
+        //public event EventHandler<string> MessageReceived = null;
 
-        public override void ConfigureController(EDeviceType type)
+        public ControllerDeviceModel()
         {
-            Name = "GENERATE NAME HERE";
-            Type = type;
+            Name = null;
+            Password = null;
+            Type = EDeviceType.NONE;
             State = EDeviceNetworkState.UNDEFINED;
         }
 
-        public async void Connect(string ipAddress)
+        public override void ConfigureController(EDeviceType type)
         {
-            int result = await ConnectToServer(ipAddress);
-            if (result == 1) // Connected to server successfully
-            {
-                Send("SEND DEVICE INFO HERE");
-                State = EDeviceNetworkState.ONLINE;
-            }
-            else // Problem occured while trying to connect to server
-            {
-                Console.WriteLine("Problem while connecting to server");
-                State = EDeviceNetworkState.OFFLINE;
-            }
+            Name = type.ToString().ToLower() + "-" + RandomGenerator.GenerateRandomString(8);
+            Type = type;
+            State = EDeviceNetworkState.UNDEFINED;
         }
 
         public void SetActions(List<string> actions)
         {
             ActionList = actions;
         }
-
-        public void Send(string json)
-        {
-            SendMessage(json);
-        }
-
 
     }
 }

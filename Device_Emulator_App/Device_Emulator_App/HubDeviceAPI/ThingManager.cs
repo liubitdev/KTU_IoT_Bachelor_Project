@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Device_Emulator_App.HubDeviceAPI.Interfaces;
 using Device_Emulator_App.HubDeviceAPI.Network;
 
 namespace Device_Emulator_App.HubDeviceAPI
 {
-    abstract public class ThingManager : IThing
+    public abstract class ThingManager : IThing
     {
         private static WebSockets websockets;
 
@@ -19,7 +17,8 @@ namespace Device_Emulator_App.HubDeviceAPI
                 websockets = new WebSockets(ipAddress);
                 result = await websockets.EstablishConnection();
                 if (result == 1) WebSockets.DataReceived += ReceiveMessage;
-            } catch
+            }
+            catch
             {
                 result = -1;
             }
