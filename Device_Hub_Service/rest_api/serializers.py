@@ -8,17 +8,22 @@ from iot_hub.models import \
     Function,\
     Parameter,\
     Behavior,\
+    Call,\
+    CallParameter,\
     Trigger,\
     StateTrigger,\
+    StateTriggerSpecific,\
+    StateTriggerRange,\
     DateTrigger
 
 
 class IoTDeviceSerializer(serializers.Serializer):
     class Meta:
+        model = IoTDevice
         fields = '__all__'
 
 
-class ControllerDeviceSerializer(IoTDeviceSerializer):
+class ControllerDeviceSerializer(IoTDeviceSerializer, serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ControllerDevice
 
@@ -29,7 +34,7 @@ class StateSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class ThingDeviceSerializer(IoTDeviceSerializer):
+class ThingDeviceSerializer(IoTDeviceSerializer, serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ThingDevice
 
@@ -52,19 +57,45 @@ class BehaviorSerializer(serializers.HyperlinkedModelSerializer):
         fields = '__all__'
 
 
-class TriggerSerializer(serializers.HyperlinkedModelSerializer):
+class CallSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
+        model = Call
         fields = '__all__'
+
+
+class CallParameterSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = CallParameter
+        fields = '__all__'
+
+
+class TriggerSerializer(serializers.Serializer):
+    class Meta:
+        model = Trigger
+        fields = '__all__'
+        abstract = True
 
 
 class StateTriggerSerializer(TriggerSerializer):
     class Meta:
         model = StateTrigger
         fields = TriggerSerializer.Meta.fields + 'state'
+        abstract = True
 
 
-class DateTriggerSerializer(TriggerSerializer):
+class StateTriggerSpecificSerializer(StateTriggerSerializer, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = StateTriggerSpecific
+        fields = StateTriggerSerializer.Meta.fields + 'trigger_value'
+
+
+class StateTriggerRangeSerializer(StateTriggerSerializer, serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = StateTriggerRange
+        fields = StateTriggerSerializer.Meta.fields + 'trigger_from' + 'trigger_to'
+
+
+class DateTriggerSerializer(TriggerSerializer, serializers.HyperlinkedModelSerializer):
     class Meta:
         model = DateTrigger
         fields = TriggerSerializer.Meta.fields + 'when'
-

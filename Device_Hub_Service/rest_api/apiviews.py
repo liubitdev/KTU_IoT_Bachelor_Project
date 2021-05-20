@@ -1,8 +1,37 @@
 from rest_framework import viewsets
 
-from iot_hub.models import ControllerDevice, State, ThingDevice, Function, Parameter, Behavior, StateTrigger, DateTrigger
-from rest_api.serializers import ControllerDeviceSerializer, StateSerializer, ThingDeviceSerializer, FunctionSerializer, \
-    ParameterSerializer, BehaviorSerializer, StateTriggerSerializer, DateTriggerSerializer
+from iot_hub.models import \
+    IoTDevice, \
+    ControllerDevice, \
+    State, \
+    ThingDevice, \
+    Function, \
+    Parameter, \
+    Behavior, \
+    Call, \
+    CallParameter, \
+    StateTriggerSpecific, \
+    StateTriggerRange, \
+    DateTrigger
+
+from rest_api.serializers import \
+    IoTDeviceSerializer, \
+    ControllerDeviceSerializer, \
+    StateSerializer, \
+    ThingDeviceSerializer, \
+    FunctionSerializer, \
+    ParameterSerializer, \
+    BehaviorSerializer, \
+    CallSerializer, \
+    CallParameterSerializer, \
+    StateTriggerSpecificSerializer, \
+    StateTriggerRangeSerializer, \
+    DateTriggerSerializer
+
+
+class IoTDeviceViewSet(viewsets.ModelViewSet):
+    queryset = IoTDevice.objects.all()
+    serializer_class = IoTDeviceSerializer
 
 
 class ControllerDeviceViewSet(viewsets.ModelViewSet):
@@ -35,13 +64,26 @@ class BehaviorViewSet(viewsets.ModelViewSet):
     serializer_class = BehaviorSerializer
 
 
-class StateTriggerViewSet(viewsets.ModelViewSet):
-    queryset = StateTrigger.objects.all()
-    serializer_class = StateTriggerSerializer
+class CallViewSet(viewsets.ModelViewSet):
+    queryset = Call.objects.all()
+    serializer_class = CallSerializer
+
+
+class CallParameterViewSet(viewsets.ModelViewSet):
+    queryset = CallParameter.objects.all()
+    serializer_class = CallParameterSerializer
+
+
+class StateTriggerSpecificViewSet(viewsets.ModelViewSet):
+    queryset = StateTriggerSpecific.objects.all()
+    serializer_class = StateTriggerSpecificSerializer
+
+
+class StateTriggerRangeViewSet(viewsets.ModelViewSet):
+    queryset = StateTriggerRange.objects.all()
+    serializer_class = StateTriggerRangeSerializer
 
 
 class DateTriggerViewSet(viewsets.ModelViewSet):
     queryset = DateTrigger.objects.all()
     serializer_class = DateTriggerSerializer
-
-

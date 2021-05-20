@@ -1,11 +1,5 @@
-from datetime import datetime
-
-from channels.routing import URLRouter
-from django.contrib.auth.models import AnonymousUser
 from django.test import TestCase
 
-from rest_api.serializers import ControllerDeviceSerializer
-from .middleware import JWTAuthMiddlewareStack
 from iot_hub.models import\
     IoTDevice,\
     ControllerDevice,\
@@ -16,6 +10,19 @@ from iot_hub.models import\
     Behavior,\
     Trigger,\
     StateTrigger,\
+    DateTrigger
+from django.test import TestCase
+
+from iot_hub.models import \
+    IoTDevice, \
+    ControllerDevice, \
+    State, \
+    ThingDevice, \
+    Function, \
+    Parameter, \
+    Behavior, \
+    Trigger, \
+    StateTrigger, \
     DateTrigger
 
 

@@ -13,10 +13,13 @@ from channels.routing import ProtocolTypeRouter
 from django.core.asgi import get_asgi_application
 
 import device_handler.urls
+from .middleware import JWTAuthMiddlewareStack
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'iot_hub.settings')
 
-application = ProtocolTypeRouter({
+application = ProtocolTypeRouter(
+    {
     "http": get_asgi_application(),
     "websocket": device_handler.urls.websocket_patterns
-})
+    }
+)
