@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Device_Emulator_App.Views;
 
 namespace Device_Emulator_App.ViewModels.Components.Controllers
 {
@@ -13,6 +14,7 @@ namespace Device_Emulator_App.ViewModels.Components.Controllers
             set
             {
                 SetProperty(ref isEnabled, value);
+                ChangedValueHandler();
             }
         }
 
@@ -29,6 +31,12 @@ namespace Device_Emulator_App.ViewModels.Components.Controllers
         public void SwitchDisable()
         {
             IsEnabled = false;
+        }
+
+        public void ChangedValueHandler()
+        {
+            // TODO: Make it into an acceptable message format
+            ControllersPage.deviceModel.SendMessage("{\"message\":\"" + IsEnabled + "\"}");
         }
 
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Device_Emulator_App.ViewModels.Components.Controllers;
 using Device_Emulator_App.Views.Components.Controllers;
 using Plugin.Fingerprint;
 using Plugin.Fingerprint.Abstractions;
@@ -10,40 +11,18 @@ namespace Device_Emulator_App.Views.Components.Controllers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FingerScannerController : BasePage
     {
-        private bool isPinCodeInputVisible = false;
+        public FingerScannerViewModel context = new FingerScannerViewModel();
+        
         public FingerScannerController()
         {
             InitializeComponent();
 
-            BindingContext = this;
+            BindingContext = context;
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            var availability = await CrossFingerprint.Current.IsAvailableAsync();
-
-            if (!availability)
-            {
-                await Application.Current.MainPage.DisplayAlert("Warning!", "Cannot read your fingerprint! You may not have it set up.", "OK");
-                return;
-            }
-
-            var authResult = await CrossFingerprint.Current.AuthenticateAsync(
-                new AuthenticationRequestConfiguration("Authorization", "Please use your fingerprint to authorize."));
-
-            if (authResult.Authenticated)
-            {
-                // TODO: Send call to HUB
-                await Application.Current.MainPage.DisplayAlert("Success!", "Authorized!", "OK");
-            }
-            else
-            {
-                if (!isPinCodeInputVisible)
-                {
-                    //ComponentContainer.Children.Add(new PinCodeController());
-                    isPinCodeInputVisible = true;
-                }
-            }
+            await context.Authorize();
         }
     }
 }

@@ -6,7 +6,7 @@
             Shell.TabBarIsVisible = "False">
 
     <StackLayout VerticalOptions="Fill" HorizontalOptions="Fill">
-        <Label Text="Control the sun!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        <Label Text="Control the light!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
         <Label Text="{Binding SliderValue}" HorizontalTextAlignment="Center" />
         <Slider AutomationId="SliderControl" x:Name="SliderInput" Minimum="0" Maximum="1" ValueChanged="SliderValueChanged"/>
         <BoxView BackgroundColor="{Binding BackgroundColor}" VerticalOptions="FillAndExpand"/>

@@ -94,6 +94,7 @@ namespace Device_Emulator_App.HubDeviceAPI.Network
                 var str = Encoding.Default.GetString(readBuffer.Array, readBuffer.Offset, result.Count);
                 if (str != null)
                 {
+                    Console.WriteLine(str);
                     DataReceived?.Invoke(this, str);
                 }
             }

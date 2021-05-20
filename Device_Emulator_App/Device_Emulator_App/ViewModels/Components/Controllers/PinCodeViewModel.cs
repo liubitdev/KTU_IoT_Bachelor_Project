@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Device_Emulator_App.Views;
 using Xamarin.Forms;
 
 namespace Device_Emulator_App.ViewModels.Components.Controllers
 {
     public class PinCodeViewModel : BaseViewModel
     {
-        private string pinInput = "";
+        private string pinInput;
         public string PinInput
         {
             get
@@ -23,25 +24,25 @@ namespace Device_Emulator_App.ViewModels.Components.Controllers
 
         public PinCodeViewModel()
         {
-
+            PinInput = "";
         }
 
         public void PinNumberButtonHandler(object sender, EventArgs e)
         {
             var button = (Button)sender;
-            Console.WriteLine(button.ClassId);
             if (PinInput.Length < 4)
             {
                 PinInput += button.ClassId.ToString();
             }
         }
 
-        public async void SubmitButtonHandler(object sender, EventArgs e)
+        public void SubmitButtonHandler()
         {
-            //await webSockets.SendData("");
+            // TODO: Make it into an acceptable message format
+            ControllersPage.deviceModel.SendMessage("{\"message\":\"" + PinInput + "\"}");
         }
 
-        public async void DeleteButtonHandler(object sender, EventArgs e)
+        public void DeleteButtonHandler()
         {
             if (PinInput.Length != 0)
             {

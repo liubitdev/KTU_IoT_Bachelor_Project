@@ -24,7 +24,8 @@ namespace Device_Emulator_App.Views.Components.Controllers
         private void SliderValueChanged(object sender, ValueChangedEventArgs e)
         {
             Slider slider = (Slider)sender;
-            context.SliderValue = (float)slider.Value;
+            float sliderValue = (float)slider.Value;
+            context.SliderValue = sliderValue;
         }
     }
 }

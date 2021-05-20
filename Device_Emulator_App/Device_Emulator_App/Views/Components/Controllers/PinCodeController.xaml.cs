@@ -21,14 +21,14 @@ namespace Device_Emulator_App.Views.Components.Controllers
             context.PinNumberButtonHandler(sender, e);
         }
 
-        public async void SubmitButtonHandler(object sender, EventArgs e)
+        public  void SubmitButtonHandler(object sender, EventArgs e)
         {
-            //await webSockets.SendData("");
+            context.SubmitButtonHandler();
         }
 
-        public async void DeleteButtonHandler(object sender, EventArgs e)
+        public void DeleteButtonHandler(object sender, EventArgs e)
         {
-            context.DeleteButtonHandler(sender, e);
+            context.DeleteButtonHandler();
         }
 
     }

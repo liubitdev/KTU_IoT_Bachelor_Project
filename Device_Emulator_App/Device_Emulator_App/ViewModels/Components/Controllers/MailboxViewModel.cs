@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Device_Emulator_App.Views;
 
 namespace Device_Emulator_App.ViewModels.Components.Controllers
 {
@@ -59,11 +60,15 @@ namespace Device_Emulator_App.ViewModels.Components.Controllers
         public void AddParcel()
         {
             IsMailboxFull = true;
+            // TODO: Make it into an acceptable message format
+            ControllersPage.deviceModel.SendMessage("{\"message\":\"full\"}");
         }
 
         public void RemoveParcel()
         {
             IsMailboxFull = false;
+            // TODO: Make it into an acceptable message format
+            ControllersPage.deviceModel.SendMessage("{\"message\":\"empty\"}");
         }
 
     }
